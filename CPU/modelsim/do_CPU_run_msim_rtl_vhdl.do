@@ -1,4 +1,6 @@
 transcript on
+set WORK_DIR "D:/GIT/github/mcu_V3/CPU"
+set ALL_DIR "D:/GIT/github/mcu_V3"
 
 vlib rtl_work
 vmap work rtl_work
@@ -6,20 +8,20 @@ vmap work rtl_work
 vlib my_lib
 vmap rtl_work my_lib
 
-vcom -2008 -work my_lib {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/types.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/adder.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux2.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux4.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/signext.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/reg.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/regU.vhd}
-vcom -2008 -work my_lib {D:/git/deleta/SKOLAAAALAMCU/CPU/lib/instruction_set.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/Instruction_decoder/src/instruction_decoder_v2.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/GPR/src/general_purpose_register_v2.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/src/CPU.vhd}
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/ALU/src/arithmetic_logic_unit_v2.vhd}
+vcom -2008 -work my_lib "${ALL_DIR}/CPU/lib/types.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/adder.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/mux2.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/mux4.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/signext.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/reg.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/lib/basic/regU.vhd"
+vcom -2008 -work my_lib "${ALL_DIR}/CPU/lib/instruction_set.vhd"
+vcom -2008 -work work "${ALL_DIR}/Instruction_decoder_v2/src/instruction_decoder_v2.vhd"
+vcom -2008 -work work "${ALL_DIR}/GPR/src/general_purpose_register_v2.vhd"
+vcom -2008 -work work "${ALL_DIR}/CPU/src/CPU.vhd"
+vcom -2008 -work work "${ALL_DIR}/ALU/src/arithmetic_logic_unit_v2.vhd"
 
-vcom -2008 -work work {D:/git/deleta/SKOLAAAALAMCU/CPU/work/../tb/CPU_tb.vhd}
+vcom -2008 -work work "${ALL_DIR}/CPU/work/../tb/CPU_tb.vhd"
 
 vsim -t 1ps -L rtl_work -L work -voptargs="+acc"  CPU_tb
 
@@ -46,10 +48,12 @@ add wave -position end  sim:/cpu_tb/uut/Rs
 add wave -position end  sim:/cpu_tb/uut/Rd
 add wave -position end  sim:/cpu_tb/uut/pc_offset
 add wave -position end  sim:/cpu_tb/uut/PC_offset_s
+add wave -position end  sim:/cpu_tb/uut/SP
+add wave -position end  sim:/cpu_tb/uut/SP_next
 
 view structure
 view signals
-run 0.9 us
+run 1.1 us
 
 radix -unsigned
 radix signal sim:/cpu_tb/uut/Rd_addr unsigned

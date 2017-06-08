@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\User\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jun 08 18:54:57 2017
+AVRASM ver. 2.2.6  D:\GIT\github\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jun 08 22:31:33 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\avrasm\inc\tn4def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\avrasm\inc\tn4def.inc'
@@ -400,13 +400,14 @@ AVRASM ver. 2.2.6  C:\Users\User\Documents\Atmel Studio\7.0\AssemblerApplication
 000007 2710                      eor R17, R16	; R17 = 254
 000008 5f1f                      subi R17,255		; R17 = 254 - 255 = 255
 000009 400a                      sbci R16,10		; R16 = 254 - 10 - 1 = 243 
-00000a c000                      rjmp pushy
-                                 
+00000a c002                      rjmp pushy
+00000b d001                      rcall pushy
+00000c 0000                      nop
                                  pushy : 
-00000b 934f                      push R20		; RAM(SP0) = 15
-00000c 933f                      push R19		; RAM(SP1) = 5
-00000d 910f                      pop R16			; R16 = RAM(SP1) = 5
-00000e 911f                      pop R17			; R17 = RAM(SP0) = 15
+00000d 934f                      push R20		; RAM(SP0) = 15
+00000e 933f                      push R19		; RAM(SP1) = 5
+00000f 910f                      pop R16			; R16 = RAM(SP1) = 5
+000010 911f                      pop R17			; R17 = RAM(SP0) = 15
 
 
 RESOURCE USE INFORMATION
@@ -442,19 +443,19 @@ cln   :   0 clr   :   0 cls   :   0 clt   :   0 clv   :   0 clz   :   0
 com   :   0 cp    :   0 cpc   :   0 cpi   :   0 cpse  :   0 dec   :   0 
 eor   :   2 icall :   0 ijmp  :   0 in    :   0 inc   :   0 ld    :   0 
 ldd   :   0 ldi   :   2 lds   :   0 lsl   :   0 lsr   :   0 mov   :   2 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   2 
-push  :   2 rcall :   0 ret   :   0 reti  :   0 rjmp  :   1 rol   :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   0 pop   :   2 
+push  :   2 rcall :   1 ret   :   0 reti  :   0 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   1 sbi   :   0 sbic  :   0 sbis  :   0 
 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 
 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 
 sleep :   0 st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   1 
 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 10 out of 99 (10.1%)
+Instructions used: 12 out of 99 (12.1%)
 
 "ATtiny4" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00001e     30      0     30     512   5.9%
+[.cseg] 0x000000 0x000022     34      0     34     512   6.6%
 [.dseg] 0x000040 0x000060      0      0      0      32   0.0%
 [.eseg] 0x000000 0x000000      0      0      0       0      -
 

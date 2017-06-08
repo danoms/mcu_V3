@@ -7,37 +7,37 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dD:/git/deleta/SKOLAAAALAMCU/cpU/modelsim
+dD:/git/deleta/SKOLAAAALAMCU/cpU/modelsim
 Eadder
-Z1 w1496400849
-Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-R0
-Z5 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/adder.vhd
-Z6 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/adder.vhd
+Z0 w1496946128
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dD:/git/github/mcu_v3/cpU/modelsim
+Z5 8D:/GIT/github/mcu_V3/CPU/lib/basic/adder.vhd
+Z6 FD:/GIT/github/mcu_V3/CPU/lib/basic/adder.vhd
 l0
 L5
-VdlY6AOd?@]F0OIEOHXC=n0
+V[5X:`C68ciGeg;FQjM9fX3
 !s100 Z=Llz][8Oj^j8DgO7Y9n`2
-Z7 OW;C;10.5c;63
+Z7 OV;C;10.5b;63
 33
-Z8 !s110 1496935819
+Z8 !s110 1496954876
 !i10b 1
-Z9 !s108 1496935819.000000
-Z10 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/adder.vhd|
-Z11 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/adder.vhd|
+Z9 !s108 1496954876.000000
+Z10 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/adder.vhd|
+Z11 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/adder.vhd|
 !i113 1
-Z12 o-2008 -work work -O0
+Z12 o-2008 -work work
 Z13 tExplicit 1 CvgOpt 0
 Artl
+R1
 R2
 R3
-R4
-DEx4 work 5 adder 0 22 dlY6AOd?@]F0OIEOHXC=n0
+DEx4 work 5 adder 0 22 [5X:`C68ciGeg;FQjM9fX3
 l12
 L11
-V]C8ffz6RKoI@h]W;Z2Pkf3
+V;gkV6PKGR:Mh@kFYb:IV[2
 !s100 efILjM];252WGD>bSlHJc3
 R7
 33
@@ -50,40 +50,40 @@ R11
 R12
 R13
 Earithmetic_logic_unit_v2
-Z14 w1496931891
-Z15 DPx6 my_lib 15 instruction_set 0 22 @j4oEW=GPOoFL>8kH0JUe2
-Z16 DPx6 my_lib 5 types 0 22 j2Z@IUgJYJ4l4zWGl1Tb91
+Z14 w1496950841
+Z15 DPx6 my_lib 15 instruction_set 0 22 7<D49>n[8n1GeZYLAc7bL3
+Z16 DPx6 my_lib 5 types 0 22 `LRWQPDzf9<P4^QZ89M@z1
+R1
 R2
 R3
 R4
-R0
-Z17 8D:/git/deleta/SKOLAAAALAMCU/ALU/src/arithmetic_logic_unit_v2.vhd
-Z18 FD:/git/deleta/SKOLAAAALAMCU/ALU/src/arithmetic_logic_unit_v2.vhd
+Z17 8D:/GIT/github/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd
+Z18 FD:/GIT/github/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd
 l0
 L7
-VdNiM:gdjI@mlYhd1b3E1m0
+V_8>SXBQRWN:;Gh>_C?3Ao1
 !s100 F]cVlRa4X]Je0KJ@HEHI11
 R7
 33
-Z19 !s110 1496935820
+Z19 !s110 1496954877
 !i10b 1
-Z20 !s108 1496935820.000000
-Z21 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/ALU/src/arithmetic_logic_unit_v2.vhd|
-Z22 !s107 D:/git/deleta/SKOLAAAALAMCU/ALU/src/arithmetic_logic_unit_v2.vhd|
+Z20 !s108 1496954877.000000
+Z21 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd|
+Z22 !s107 D:/GIT/github/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd|
 !i113 1
 R12
 R13
 Aavr
 R15
 R16
+R1
 R2
 R3
-R4
-DEx4 work 24 arithmetic_logic_unit_v2 0 22 dNiM:gdjI@mlYhd1b3E1m0
+DEx4 work 24 arithmetic_logic_unit_v2 0 22 _8>SXBQRWN:;Gh>_C?3Ao1
 l21
 L19
-VzkI50NNVX7Jb^ZVk2GK1Y3
-!s100 NRm>C:]51b@:A5@KA>3V`0
+VKnPnn<Z0MlzeB2Mfe;cGj2
+!s100 5kD:jMC]lY_1jJFAjXi_E0
 R7
 33
 R19
@@ -95,38 +95,38 @@ R22
 R12
 R13
 Ecpu
-Z23 w1496935226
+Z23 w1496951648
 R16
+R1
 R2
 R3
 R4
-R0
-Z24 8D:/git/deleta/SKOLAAAALAMCU/CPU/src/CPU.vhd
-Z25 FD:/git/deleta/SKOLAAAALAMCU/CPU/src/CPU.vhd
+Z24 8D:/GIT/github/mcu_V3/CPU/src/CPU.vhd
+Z25 FD:/GIT/github/mcu_V3/CPU/src/CPU.vhd
 l0
 L6
-VDaccjmfj0_=2`<ZXS=ALn1
+V29Xz`eE>D]4jCg;KGWD0T0
 !s100 jejmDN6JSPkMHTd02lP;70
 R7
 33
 R19
 !i10b 1
 R20
-Z26 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/src/CPU.vhd|
-Z27 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/src/CPU.vhd|
+Z26 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/src/CPU.vhd|
+Z27 !s107 D:/GIT/github/mcu_V3/CPU/src/CPU.vhd|
 !i113 1
 R12
 R13
 Artl
 R16
+R1
 R2
 R3
-R4
-DEx4 work 3 cpu 0 22 Daccjmfj0_=2`<ZXS=ALn1
-l144
+DEx4 work 3 cpu 0 22 29Xz`eE>D]4jCg;KGWD0T0
+l146
 L22
-VgE<Y3:PgYc3MHIje`z?UC1
-!s100 586T^K]Z3g9?T9Nh7]8Ii2
+V4_37;CHbB=MIFimR4al;10
+!s100 ZWB5H9H]lBa8oWIP[c7b80
 R7
 33
 R19
@@ -138,36 +138,36 @@ R27
 R12
 R13
 Ecpu_tb
-Z28 w1496935816
+Z28 w1496954817
+R1
 R2
 R3
 R4
-R0
-Z29 8D:/git/deleta/SKOLAAAALAMCU/CPU/work/../tb/CPU_tb.vhd
-Z30 FD:/git/deleta/SKOLAAAALAMCU/CPU/work/../tb/CPU_tb.vhd
+Z29 8D:/GIT/github/mcu_V3/CPU/work/../tb/CPU_tb.vhd
+Z30 FD:/GIT/github/mcu_V3/CPU/work/../tb/CPU_tb.vhd
 l0
 L5
-VA8:1SJ;2XVe:[UnW?dcN?1
+VS3cK@dLY]dY^@=nB:i72E2
 !s100 gm6[k8DRFizMEko01oAgo1
 R7
 33
 R19
 !i10b 1
 R20
-Z31 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/work/../tb/CPU_tb.vhd|
-Z32 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/work/../tb/CPU_tb.vhd|
+Z31 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/work/../tb/CPU_tb.vhd|
+Z32 !s107 D:/GIT/github/mcu_V3/CPU/work/../tb/CPU_tb.vhd|
 !i113 1
 R12
 R13
 Atesty
+R1
 R2
 R3
-R4
-Z33 DEx4 work 6 cpu_tb 0 22 A8:1SJ;2XVe:[UnW?dcN?1
-l52
+Z33 DEx4 work 6 cpu_tb 0 22 S3cK@dLY]dY^@=nB:i72E2
+l53
 L9
-V]Pmo0DbOdZo]?FJN=IiZm1
-!s100 gJ6inG7mZ9AaXmKg3B0WU2
+V3bI`6blSP<1JFcFHJG:fK3
+!s100 eDBnI5?[8BbSJ[7Ti[3PD0
 R7
 33
 R19
@@ -179,291 +179,291 @@ R32
 R12
 R13
 Egeneral_purpose_register_v2
-Z34 w1496401778
+R0
 R16
+R1
 R2
 R3
 R4
-R0
-Z35 8D:/git/deleta/SKOLAAAALAMCU/GPR/src/general_purpose_register_v2.vhd
-Z36 FD:/git/deleta/SKOLAAAALAMCU/GPR/src/general_purpose_register_v2.vhd
+Z34 8D:/GIT/github/mcu_V3/GPR/src/general_purpose_register_v2.vhd
+Z35 FD:/GIT/github/mcu_V3/GPR/src/general_purpose_register_v2.vhd
 l0
 L6
-V<`JPXBQ[>5IX_3F;X<Za>3
+VcVVkQ;=A55MHQmW]hEQ132
 !s100 e_jfOBA1D^bNYEgP7Xo0k3
 R7
 33
 R19
 !i10b 1
 R20
-Z37 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/GPR/src/general_purpose_register_v2.vhd|
-Z38 !s107 D:/git/deleta/SKOLAAAALAMCU/GPR/src/general_purpose_register_v2.vhd|
+Z36 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/GPR/src/general_purpose_register_v2.vhd|
+Z37 !s107 D:/GIT/github/mcu_V3/GPR/src/general_purpose_register_v2.vhd|
 !i113 1
 R12
 R13
 Aavr
 R16
+R1
 R2
 R3
-R4
-DEx4 work 27 general_purpose_register_v2 0 22 <`JPXBQ[>5IX_3F;X<Za>3
+DEx4 work 27 general_purpose_register_v2 0 22 cVVkQ;=A55MHQmW]hEQ132
 l37
 L30
-VcZKGmO4F6=b<J35g@lK`h2
+VM4TLRZbKVE<M=[5II<>^S1
 !s100 ^Ob?OcchcDIHQ1EUANh>S2
 R7
 33
 R19
 !i10b 1
 R20
+R36
 R37
-R38
 !i113 1
 R12
 R13
 Einstruction_decoder_v2
-Z39 w1496935469
+Z38 w1496952786
 R16
+R1
 R2
 R3
 R4
-R0
-Z40 8D:/git/deleta/SKOLAAAALAMCU/Instruction_decoder/src/instruction_decoder_v2.vhd
-Z41 FD:/git/deleta/SKOLAAAALAMCU/Instruction_decoder/src/instruction_decoder_v2.vhd
+Z39 8D:/GIT/github/mcu_V3/Instruction_decoder_v2/src/instruction_decoder_v2.vhd
+Z40 FD:/GIT/github/mcu_V3/Instruction_decoder_v2/src/instruction_decoder_v2.vhd
 l0
 L6
-Ve5?`gW2A=E[Yh66Sm60QV1
+V_gWazQGP`3Cz^O9CED8Ui0
 !s100 mhIQ=OBhJI7H0<VHk4^BR0
 R7
 33
 R19
 !i10b 1
 R20
-Z42 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/Instruction_decoder/src/instruction_decoder_v2.vhd|
-Z43 !s107 D:/git/deleta/SKOLAAAALAMCU/Instruction_decoder/src/instruction_decoder_v2.vhd|
+Z41 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/Instruction_decoder_v2/src/instruction_decoder_v2.vhd|
+Z42 !s107 D:/GIT/github/mcu_V3/Instruction_decoder_v2/src/instruction_decoder_v2.vhd|
 !i113 1
 R12
 R13
 Asomething
 R16
+R1
 R2
 R3
-R4
-DEx4 work 22 instruction_decoder_v2 0 22 e5?`gW2A=E[Yh66Sm60QV1
+DEx4 work 22 instruction_decoder_v2 0 22 _gWazQGP`3Cz^O9CED8Ui0
 l40
 L31
-VYLc;K6iHUim<2mOF4LlR30
-!s100 ZEF;^?ZakUEJR442I::1i0
+V@OF7WIANRWdgQE50diBdM3
+!s100 O1^GQ@2c3aL4aKA?;KJEK0
 R7
 33
 R19
 !i10b 1
 R20
+R41
 R42
-R43
 !i113 1
 R12
 R13
 Emux2
-Z44 w1496933228
+R0
+R1
 R2
 R3
 R4
-R0
-Z45 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux2.vhd
-Z46 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux2.vhd
+Z43 8D:/GIT/github/mcu_V3/CPU/lib/basic/mux2.vhd
+Z44 FD:/GIT/github/mcu_V3/CPU/lib/basic/mux2.vhd
 l0
 L5
-VFkHW[O6Acg^z9FRXeR2::1
+VL_=:1gm_@7NZJ?TPo<CaZ3
 !s100 D0LQH`VG7b9^_4HWZX2QL3
 R7
 33
 R8
 !i10b 1
 R9
-Z47 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux2.vhd|
-Z48 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux2.vhd|
+Z45 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/mux2.vhd|
+Z46 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/mux2.vhd|
 !i113 1
 R12
 R13
 Artl
+R1
 R2
 R3
-R4
-DEx4 work 4 mux2 0 22 FkHW[O6Acg^z9FRXeR2::1
+DEx4 work 4 mux2 0 22 L_=:1gm_@7NZJ?TPo<CaZ3
 l13
 L12
-V<oY>URWO2]YR96[2Y3V=>1
+Vzb:zUjI9JXZ<O331L6b4f2
 !s100 >3=4Kh;YJHbYezPKTgRiX3
 R7
 33
 R8
 !i10b 1
 R9
-R47
-R48
+R45
+R46
 !i113 1
 R12
 R13
 Emux4
-Z49 w1496933189
+R0
+R1
 R2
 R3
 R4
-R0
-Z50 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux4.vhd
-Z51 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux4.vhd
+Z47 8D:/GIT/github/mcu_V3/CPU/lib/basic/mux4.vhd
+Z48 FD:/GIT/github/mcu_V3/CPU/lib/basic/mux4.vhd
 l0
 L5
-V>jK;gh8ZQ;aCWC=?2XN`m2
+V4MLF4l4HZ9jdii9M=C;hU2
 !s100 D3L;I5X;3TVaaDamdR^1A1
 R7
 33
 R8
 !i10b 1
 R9
-Z52 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux4.vhd|
-Z53 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/mux4.vhd|
+Z49 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/mux4.vhd|
+Z50 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/mux4.vhd|
 !i113 1
 R12
 R13
 Artl
+R1
 R2
 R3
-R4
-DEx4 work 4 mux4 0 22 >jK;gh8ZQ;aCWC=?2XN`m2
+DEx4 work 4 mux4 0 22 4MLF4l4HZ9jdii9M=C;hU2
 l15
 L14
-VV@A[bE0SK5=GCiEelo0762
+Vl=i^azF7Zh01TShL9kO:F3
 !s100 1dRO`OglW`78?[Ah0kRfE2
 R7
 33
 R8
 !i10b 1
 R9
-R52
-R53
+R49
+R50
 !i113 1
 R12
 R13
 Ereg
-Z54 w1496401247
+R0
+R2
 R3
 R4
-R0
-Z55 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/reg.vhd
-Z56 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/reg.vhd
+Z51 8D:/GIT/github/mcu_V3/CPU/lib/basic/reg.vhd
+Z52 FD:/GIT/github/mcu_V3/CPU/lib/basic/reg.vhd
 l0
 L4
-Vzb9Q_341;89V0[Ri@7hnJ1
+V8PFAJ02P7mCP[BT;4DjVn1
 !s100 Un>4]>mXI5?;bcg:oYUU]0
 R7
 33
 R8
 !i10b 1
 R9
-Z57 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/reg.vhd|
-Z58 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/reg.vhd|
+Z53 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/reg.vhd|
+Z54 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/reg.vhd|
 !i113 1
 R12
 R13
 Artl
+R2
 R3
-R4
-DEx4 work 3 reg 0 22 zb9Q_341;89V0[Ri@7hnJ1
+DEx4 work 3 reg 0 22 8PFAJ02P7mCP[BT;4DjVn1
 l14
 L13
-VQJJo9_DUDdF@I<Y6CeIbZ1
+VXdcGJSAcmADPRWD2>1>1z1
 !s100 I8kZdZGY[8HC8`m:?OW3A2
 R7
 33
 R8
 !i10b 1
 R9
-R57
-R58
+R53
+R54
 !i113 1
 R12
 R13
 Eregu
-Z59 w1496400952
+Z55 w1496951667
+R1
 R2
 R3
 R4
-R0
-Z60 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/regU.vhd
-Z61 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/regU.vhd
+Z56 8D:/GIT/github/mcu_V3/CPU/lib/basic/regU.vhd
+Z57 FD:/GIT/github/mcu_V3/CPU/lib/basic/regU.vhd
 l0
 L5
-V6VG`MF=E_MldK97K]`JAk1
-!s100 1k1[LA5JFGb0iYmFBHCPa0
+V=TCEWW<hfRT=zM_=WC90g1
+!s100 j`kQP;VVJojk16EW8K2l70
 R7
 33
-R19
+R8
 !i10b 1
 R9
-Z62 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/regU.vhd|
-Z63 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/regU.vhd|
+Z58 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/regU.vhd|
+Z59 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/regU.vhd|
 !i113 1
 R12
 R13
 Artl
+R1
 R2
 R3
-R4
-DEx4 work 4 regu 0 22 6VG`MF=E_MldK97K]`JAk1
-l14
-L13
-V7UO1nz_cKb=BzJOPV8J[01
-!s100 z`:dJ[IU_W51DWm1884Sz0
+DEx4 work 4 regu 0 22 =TCEWW<hfRT=zM_=WC90g1
+l15
+L14
+VQ6GVE3;mHOIL67RHg1Ld73
+!s100 2:YVbAm<6fB6`cG:Sj<:U2
 R7
 33
-R19
+R8
 !i10b 1
 R9
-R62
-R63
+R58
+R59
 !i113 1
 R12
 R13
 Esignext
-Z64 w1496932368
+R0
+R1
 R2
 R3
 R4
-R0
-Z65 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/signext.vhd
-Z66 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/signext.vhd
+Z60 8D:/GIT/github/mcu_V3/CPU/lib/basic/signext.vhd
+Z61 FD:/GIT/github/mcu_V3/CPU/lib/basic/signext.vhd
 l0
 L5
-V]A06[4=F]>3XEDUjIUbg11
+VCCSSh^A8l6B>FkQha9aTz3
 !s100 ?jZ2nk?RjN0`fB<ADH6dE2
 R7
 33
 R8
 !i10b 1
 R9
-Z67 !s90 -reportprogress|300|-2008|-work|work|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/signext.vhd|
-Z68 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/basic/signext.vhd|
+Z62 !s90 -reportprogress|300|-2008|-work|work|D:/GIT/github/mcu_V3/CPU/lib/basic/signext.vhd|
+Z63 !s107 D:/GIT/github/mcu_V3/CPU/lib/basic/signext.vhd|
 !i113 1
 R12
 R13
 Artl
+R1
 R2
 R3
-R4
-DEx4 work 7 signext 0 22 ]A06[4=F]>3XEDUjIUbg11
+DEx4 work 7 signext 0 22 CCSSh^A8l6B>FkQha9aTz3
 l11
 L10
-V2`XnAXL6zVl@=ED:U=8DV1
+V;:@Ch3LFaGEgOK>D0VT`C0
 !s100 Z^QXABm5Y8:Pa9cFdGzl52
 R7
 33
 R8
 !i10b 1
 R9
-R67
-R68
+R62
+R63
 !i113 1
 R12
 R13

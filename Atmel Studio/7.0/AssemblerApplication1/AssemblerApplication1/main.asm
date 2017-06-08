@@ -19,7 +19,10 @@ eor R17, R16	; R17 = 254
 subi R17,255		; R17 = 254 - 255 = 255
 sbci R16,10		; R16 = 254 - 10 - 1 = 243 
 rjmp pushy
-
+rcall pushy
+nop
+movw R16,19		; 
+adiw R28,61
 pushy : 
 push R20		; RAM(SP0) = 15
 push R19		; RAM(SP1) = 5

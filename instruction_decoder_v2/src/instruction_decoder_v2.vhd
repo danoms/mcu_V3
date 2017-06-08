@@ -51,10 +51,11 @@ begin
 		ctl.we 		<= (others => '0');
 
 		ctl.mux.srcA 		<= '0';
-		ctl.mux.srcB 		<= (others => '0');
+		ctl.mux.srcB 		<= "00";
 		ctl.mux.PC 			<= '0';
 		ctl.mux.GPR			<= '0';
-		ctl.mux.SP 			<= '0';
+		ctl.mux.SP 			<= "00";
+		ctl.mux.RAM 		<= '0';
 
 		ctl.en 		<= (others => '0');
 
@@ -75,6 +76,10 @@ begin
 			Rd_addr_o 	<= unsigned(data_i(8) & low_h_x);
 
             case( high_l_x ) is
+					when x"1" =>
+						op_o 	<= movw;
+						ctl.we.GPR 		<= '1';
+						ctl.en.word 	<= '1';
 
             	when x"4" | x"5" | x"6" | x"7" =>
 						op_o 			<= cpc;
@@ -247,8 +252,8 @@ begin
 							when x"F" =>
 								op_o 				<= pop;
 --								ctl_en.SP 		<= '1';
-								ctl.en.SP 		<= '1';
-								ctl.mux.SP 		<= '1'; -- plus 1
+								ctl.en.SP 		<= '1'; 	-- update SP
+								ctl.mux.SP 		<= "00"; -- plus 1
 								ctl.we.GPR 		<= '1';
 								ctl.mux.GPR 	<= '1'; -- data from RAM to GPR
 							when others =>
@@ -283,7 +288,8 @@ begin
 
 							when x"F" =>
 								op_o 				<= push;
-								ctl.en.SP	 	<= '1';
+								ctl.en.SP	 	<= '1'; 		-- update SP
+								ctl.mux.SP 		<= "10"; 	-- SP - 1
 								ctl.we.RAM 		<= '1';
 							when others =>
 						end case;
@@ -338,6 +344,8 @@ begin
 						immed_o		<= unsigned("00" & data_i(7 downto 6) & low_x);
 						Rd_addr_o	<= unsigned("11" & data_i(5 downto 4) & '0');
 						op_o			<= adiw;
+						ctl.en.word 	<= '1';
+						ctl.we.GPR 		<= '1';
 
 					when x"7" =>
 						immed_o		<= unsigned("00" & data_i(7 downto 6) & low_x);
@@ -386,24 +394,27 @@ begin
 
 					when others =>
 				end case;
-
 			when x"C" =>
-				pc_offset 	<= unsigned(data_i(11 downto 0));
-				op_o 			<= rjmp;
-				ctl.mux.PC 	<= '1'; -- relative PC_next
-				ctl.mux.srcA 	<= '1'; -- PC to srcA
-				ctl.mux.srcB 	<= "10"; -- signed immediate to srcB
-
+				pc_offset 	    <= unsigned(data_i(11 downto 0));
+				op_o 			    <= rjmp;
+				ctl.mux.PC 	    <= '1'; 	-- PC_next = aluResult
+				ctl.mux.srcA 	 <= '1'; 	-- PC to srcA
+				ctl.mux.srcB 	 <= "10"; 	-- signed immediate to srcB
 			when x"D" =>
-				pc_offset 	<= unsigned(data_i(11 downto 0));
-				op_o 			<= rcall;
-
+				pc_offset 	    <= unsigned(data_i(11 downto 0));
+				op_o 			    <= rcall;
+				ctl.mux.PC      <= '1'; 			-- PC_next    = ALU result
+				ctl.mux.srcA 	 <= '1'; 			-- srcA       = PC
+				ctl.mux.srcB 	 <= "10"; 			-- srcB       = immed_s
+				ctl.mux.RAM 	 <= '1'; 			-- RAM_data_i = PC_plus1
+				ctl.mux.SP 		 <= "11";     		-- SP_next = SP - 2
+				ctl.en.SP 		 <= '1';
 			when x"E" =>
-				immed_o 		<= unsigned(data_i(11 downto 8) & data_i(3 downto 0));
-				Rd_addr_o 	<= unsigned('1' & data_i(7 downto 4));
-				op_o 			<= ldi;
-				ctl.we.GPR 	<= '1';
-				ctl.mux.srcB 	<= "01";
+				immed_o 		    <= unsigned(data_i(11 downto 8) & data_i(3 downto 0));
+				Rd_addr_o 	    <= unsigned('1' & data_i(7 downto 4));
+				op_o 			    <= ldi;
+				ctl.we.GPR 	    <= '1';
+				ctl.mux.srcB 	 <= "01";
 --				we_gpr		<= '1';
 --				ctl_line_o.immed 	<= '1';
 
@@ -412,10 +423,15 @@ begin
 
 				case( high_l_x ) is
 
-					when x"0" | x"1" | x"2" | x"3" | x"4" | x"5" | x"6" | x"7" =>
-						op_o 			<= cond_branch;
-						pc_offset 	<= unsigned(data_i(11 downto 0));
+					when x"0" | x"1" | x"2" | x"3"  =>
+						op_o 			<= brlt;
+						pc_offset 	<= data_i(9)&data_i(9)&data_i(9)&data_i(9)&
+											data_i(9) & unsigned(data_i(9 downto 3));
+						ctl.en.brlt 	<= '1';
 
+--					when x"0" | x"1" | x"2" | x"3" | x"4" | x"5" | x"6" | x"7" =>
+--						op_o 			<= cond_branch;
+						
 					when x"8" | x"9" =>
 						op_o 			<= bld;
 						Rd_addr_o 	<= unsigned(data_i(8) & low_h_x);

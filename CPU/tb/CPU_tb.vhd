@@ -34,7 +34,7 @@ architecture testy of cpu_tb is
    signal we_RAM   : std_logic := '0';
    signal we_IO    : std_logic := '0';
    signal ctl_data : std_logic := '0';
-
+   signal i : integer;
    -- constant instr_tb : std_logic_vector := x"09C010C00FC00EC00DC00CC00BC00AC0" &
    --                                           x"09C008C011271FBFCFE5D0E0DEBFCDBF" &
    --                                           x"02D04AC0EDCFCF93DF9300D000D000D0" &
@@ -48,7 +48,8 @@ architecture testy of cpu_tb is
    --                                           x"5881C450D040460F571FCA5FDF4F5883" &
    --                                           x"4A93C550D040D4CFF894FFCF";
    constant instr_tb : std_logic_vector := x"0EEF17E0412F302F340F411F11271027" &
-                                             x"1F5F0A40F9CF4F933F930F911F91";
+                                             x"1F5F0A4002C001D000004F933F930F91" &
+                                             x"1F91";
 begin
    clk   <= not clk after MAIN_CLK_PERIOD/2;
 
@@ -79,14 +80,14 @@ begin
    -- for i in 0 to 7 loop
    --    instr_i  <= instr_tb( 7+(i*2+1)*8 downto (i*2+1)*8) & instr_tb(7+(i*2)*8 downto (i*2)*8);
    -- end loop;
-
-   instr_in : process
+   i  <= to_integer(PC_o);
+   instr_in : process(all)
    begin
-      for i in 0 to instr_tb'length / 16 - 1 loop
-         wait for 5*MAIN_CLK_PERIOD;
+      -- for i in 0 to instr_tb'length / 16 - 1 loop
+         -- wait for 5*MAIN_CLK_PERIOD;
          instr_i  <= instr_tb( (i*2+1)*8 to 7+(i*2+1)*8) & instr_tb( (i*2)*8 to 7+(i*2)*8);
-      end loop;
-      wait;
+      -- end loop;
+      -- wait;
       -- wait for 10*MAIN_CLK_PERIOD;
       -- instr_i  <= x"E004"; -- ldi R16, 4
       -- wait for 10*MAIN_CLK_PERIOD;

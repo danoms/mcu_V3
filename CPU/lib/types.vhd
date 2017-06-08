@@ -35,16 +35,19 @@ package types is
 	type mux_ctl_t is record -- multiplexer control
 		srcA 	: std_logic;
 		srcB 	: std_logic_vector(1 downto 0);
-		SP 	: std_logic;
+		SP 	: std_logic_vector(1 downto 0);
 		GPR 	: std_logic;
 		PC 	: std_logic;
+		RAM 	: std_logic;
 	end record;
 
 	type en_ctl_t is record -- enable
 		SP 	: std_logic;
 		RAM 	: std_logic;
 		GPR 	: std_logic;
+		word 	: std_logic;
 		SREG 	: std_logic;
+		brlt 	: std_logic;
 	end record;
 
 	type we_ctl_t is record -- read/write enable
@@ -78,6 +81,6 @@ package types is
 									ICALL, RCALL, RET, RETI,
 									NOP, STZP, STYP, STZM, STYM, STDY, STDZ, SPMZ,
 									RJMP, cond_branch, BLD, BST, SBRC, SBRS, stx, stxp, stxm,
-									secc, CLI);
+									secc, CLI, BRLT);
 	attribute enum_encoding of operation_type : type is "gray";
 end package;

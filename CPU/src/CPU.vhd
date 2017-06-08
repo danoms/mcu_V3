@@ -29,6 +29,7 @@ architecture rtl of CPU is
 				q     : out std_logic_vector(reg_width-1 downto 0));
    end component;
 	component regU
+		generic( limit : integer := 0);
       port( clk   : in std_logic;
             rst   : in std_logic;
             en    : in std_logic;
@@ -116,7 +117,7 @@ architecture rtl of CPU is
 
    type state_t is (fetch, decode, execute, memory, writed);
    signal state_reg, state_next : state_t;
-
+	constant RAMEND : integer := 255;
    signal en        : std_logic_vector(7 downto 0) := (others => '0');
    signal instr_reg : std_logic_vector(15 downto 0);
    signal Rd_addr, Rs_addr, wa3_GPR : unsigned(4 downto 0);
@@ -131,10 +132,13 @@ architecture rtl of CPU is
    signal op   : operation_type;
    signal srcA, srcB, aluResult, GPR_data : unsigned(15 downto 0);
    signal SREG, SREG_next : std_logic_vector(7 downto 0);
-	signal PC, PC_next, PC_plus1, SP, SP_next, SP_adder	: unsigned(15 downto 0);
+	signal PC, PC_next, PC_plus1, SP_next, SP_adder	: unsigned(15 downto 0);
+	signal SP	: unsigned(15 downto 0) := x"00FF";
 	signal PC_offset_s	: unsigned(15 downto 0);
 	signal Rs, Rd : unsigned(15 downto 0);
-
+	signal brlt_and 	: std_logic;
+	signal PC_mux_ctl 	: std_logic;
+	
 	constant plus1 : unsigned(15 downto 0) := 16d"1";
 	constant minus1 : unsigned(15 downto 0) := x"FFFF";
 -- mux control signals
@@ -178,7 +182,7 @@ DECODER: instruction_decoder_v2 port map(instr_reg, Rd_addr, Rs_addr,
                                     bito);
 en(1)    <= '1' when state_reg = decode or state_reg = writed else '0';
 GPR: general_purpose_register_v2 port map(clk, rst, en(1), Rd_addr, Rs_addr, Rd_addr, Rd, Rs, GPR_data,
-                     we_GPR_l, hword_en, xd, yd, zd);
+                     we_GPR_l, ctl.en.word, xd, yd, zd);
 signed_PC_offset: signext port map(PC_offset, PC_offset_s);
 srcAmux: mux2 port map(Rd, PC, ctl.mux.srcA, srcA);
 srcBmux: mux4 port map(Rs, x"00" & immed, PC_offset_s, x"0000", ctl.mux.srcB, srcB); -- control mux
@@ -191,18 +195,22 @@ we_SREG_l	<= '1' when state_reg = writed and ctl.en.SREG = '1' else '0';
 
 --------------------- PC logic -------------------------
 PC_plusss1: adder port map(PC, 16d"1", PC_plus1);
-PC_srcmux: mux2 port map(PC_plus1, aluResult, ctl.mux.PC, PC_next);
+BRLT_and 	<= ctl.en.brlt and (SREG(N) xor SREG(V));
+PC_mux_ctl	<= ctl.mux.PC or BRLT_and;
+PC_srcmux: mux2 port map(PC_plus1, aluResult, PC_mux_ctl, PC_next);
 en(7)    <= '1' when state_reg = writed else '0';
 pc_reg: regU port map(clk, rst, en(7), PC_next, PC);
 --------------------- SP logic -------------------------
-SP_add_mux:mux2 port map(x"0001", x"FFFF", ctl.mux.SP, SP_adder);
+SP_add_mux:mux4 port map(x"0001", x"0002", x"FFFF", x"FFFE", ctl.mux.SP, SP_adder);
 SP_adder_a: adder port map(SP, SP_adder, SP_next);
 en(6) 	<= '1' when state_reg = writed and ctl.en.SP = '1' else '0';
-sp_reg: regU port map(clk, rst, en(6), SP_next, SP);
+sp_reg: regU generic map(RAMEND) port map(clk, rst, en(6), SP_next, SP);
 
 --------------------- output -------------------------
+RAM_data_o: mux2 port map(aluResult, PC_plus1, ctl.mux.RAM, data_o);
+
 PC_o 		<= PC;
-data_o 	<= aluResult;
+-- data_o 	<= aluResult;
 addr_o 	<= SP;
 --en(5) 	<= '1' when state_reg = memory and ctl.en.RAM = '1' else '0';
 we_RAM 	<= '1' when state_reg = memory and ctl.we.RAM = '1' else '0';

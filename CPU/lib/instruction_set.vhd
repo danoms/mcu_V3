@@ -94,6 +94,10 @@ package instruction_set is
 	-- Id: 17.0
 	procedure rjmp (signal a_i, b_i 		: in unsigned(15 downto 0);
 						signal result			: out unsigned(15 downto 0));
+
+	-- Id: 17.0
+	procedure rcall (signal a_i, b_i 		: in unsigned(15 downto 0);
+						signal result			: out unsigned(15 downto 0));
 end package;
 
 package body instruction_set is
@@ -466,6 +470,17 @@ package body instruction_set is
 
 	-- Id: 17.0
 	procedure rjmp (signal a_i, b_i 		: in unsigned(15 downto 0);
+						signal result			: out unsigned(15 downto 0)) is
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i + b_i + 1;
+	-- out
+		result	<= tmp_R;
+	end procedure;
+
+	-- Id: 17.0
+	procedure rcall (signal a_i, b_i 		: in unsigned(15 downto 0);
 						signal result			: out unsigned(15 downto 0)) is
 		variable tmp_R 		: unsigned(15 downto 0);
 	begin
