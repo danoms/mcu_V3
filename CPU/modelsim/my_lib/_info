@@ -1,0 +1,281 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/git/deleta/SKOLAAAALAMCU/cpU/modelsim
+Eadder
+Z1 w1496400849
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8../lib/basic/adder.vhd
+Z6 F../lib/basic/adder.vhd
+l0
+L5
+Vn12@LncSO3[ZGfYL::Kf^0
+!s100 Z=Llz][8Oj^j8DgO7Y9n`2
+Z7 OW;C;10.5c;63
+33
+Z8 !s110 1496903444
+!i10b 1
+Z9 !s108 1496903444.000000
+Z10 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/adder.vhd|
+Z11 !s107 ../lib/basic/adder.vhd|
+!i113 1
+Z12 o-2008 -work rtl_work -O0
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R2
+R3
+R4
+DEx4 work 5 adder 0 22 n12@LncSO3[ZGfYL::Kf^0
+l12
+L11
+V4GX:=4HM^XQln[9ajliFe3
+!s100 efILjM];252WGD>bSlHJc3
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Ecpu
+Z14 w1496903125
+Z15 DPx6 my_lib 5 types 0 22 I^^BU6]kLPe9@[XEJDPmb2
+R2
+R3
+R4
+R0
+Z16 8../src/CPU.vhd
+Z17 F../src/CPU.vhd
+l0
+L6
+VgWcR3Cbi8PXjPaJbEOfCe3
+!s100 jejmDN6JSPkMHTd02lP;70
+R7
+33
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-2008|-work|rtl_work|../src/CPU.vhd|
+Z19 !s107 ../src/CPU.vhd|
+!i113 1
+R12
+R13
+Artl
+R15
+R2
+R3
+R4
+DEx4 work 3 cpu 0 22 gWcR3Cbi8PXjPaJbEOfCe3
+l122
+L22
+VK3B=;f70i`:6CgPJnf@Y92
+!s100 V<]E6<T7^:ZDbMnOPa[420
+R7
+33
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13
+Ecpu_tb
+Z20 w1496416849
+R2
+R3
+R4
+R0
+Z21 8../tb/CPU_tb.vhd
+Z22 F../tb/CPU_tb.vhd
+l0
+L5
+V=dKi7=SPgJH<E3fFYT4>A2
+!s100 gm6[k8DRFizMEko01oAgo1
+R7
+33
+Z23 !s110 1496903445
+!i10b 1
+R9
+Z24 !s90 -reportprogress|300|-2008|-work|rtl_work|../tb/CPU_tb.vhd|
+Z25 !s107 ../tb/CPU_tb.vhd|
+!i113 1
+R12
+R13
+Atesty
+R2
+R3
+R4
+DEx4 work 6 cpu_tb 0 22 =dKi7=SPgJH<E3fFYT4>A2
+l38
+L9
+VPf[_nmo_H7gBUA2Xk_?2n2
+!s100 UiZ0`>2MW2>dURb^I9gIz0
+R7
+33
+R23
+!i10b 1
+R9
+R24
+R25
+!i113 1
+R12
+R13
+Pinstruction_set
+Z26 DPx6 my_lib 5 types 0 22 j2Z@IUgJYJ4l4zWGl1Tb91
+R2
+R3
+R4
+Z27 w1496930006
+R0
+Z28 8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/instruction_set.vhd
+Z29 FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/instruction_set.vhd
+l0
+L7
+V@j4oEW=GPOoFL>8kH0JUe2
+!s100 6_iclbeki2`]nRkJJh:5_2
+R7
+33
+b1
+Z30 !s110 1496935820
+!i10b 1
+Z31 !s108 1496935820.000000
+Z32 !s90 -reportprogress|300|-2008|-work|my_lib|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/instruction_set.vhd|
+Z33 !s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/instruction_set.vhd|
+!i113 1
+Z34 o-2008 -work my_lib -O0
+R13
+Bbody
+Z35 DPx4 work 15 instruction_set 0 22 @j4oEW=GPOoFL>8kH0JUe2
+R26
+R2
+R3
+R4
+l0
+L99
+Z36 V]EYbeENNono0YYL0S[]kc0
+Z37 !s100 hi]@mcFhc;:IMWG8Mk6582
+R7
+33
+R30
+!i10b 1
+R31
+R32
+R33
+!i113 1
+R34
+R13
+Ereg
+Z38 w1496401247
+R3
+R4
+R0
+Z39 8../lib/basic/reg.vhd
+Z40 F../lib/basic/reg.vhd
+l0
+L4
+VfOB2Fok15iPibgjY]A[ih0
+!s100 Un>4]>mXI5?;bcg:oYUU]0
+R7
+33
+R8
+!i10b 1
+R9
+Z41 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/reg.vhd|
+Z42 !s107 ../lib/basic/reg.vhd|
+!i113 1
+R12
+R13
+Artl
+R3
+R4
+DEx4 work 3 reg 0 22 fOB2Fok15iPibgjY]A[ih0
+l14
+L13
+V3f^XnF=ZL`H0Ijg4XW`VO2
+!s100 I8kZdZGY[8HC8`m:?OW3A2
+R7
+33
+R8
+!i10b 1
+R9
+R41
+R42
+!i113 1
+R12
+R13
+Eregu
+Z43 w1496400952
+R2
+R3
+R4
+R0
+Z44 8../lib/basic/regU.vhd
+Z45 F../lib/basic/regU.vhd
+l0
+L5
+Vk7gD1AeAb[U23R`^_i?5>2
+!s100 1k1[LA5JFGb0iYmFBHCPa0
+R7
+33
+R8
+!i10b 1
+R9
+Z46 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/regU.vhd|
+Z47 !s107 ../lib/basic/regU.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 4 regu 0 22 k7gD1AeAb[U23R`^_i?5>2
+l14
+L13
+V[<_^4>@hM4nc;[CnYG9F`1
+!s100 z`:dJ[IU_W51DWm1884Sz0
+R7
+33
+R8
+!i10b 1
+R9
+R46
+R47
+!i113 1
+R12
+R13
+Ptypes
+R2
+R3
+R4
+w1496932394
+R0
+8D:/git/deleta/SKOLAAAALAMCU/CPU/lib/types.vhd
+FD:/git/deleta/SKOLAAAALAMCU/CPU/lib/types.vhd
+l0
+L6
+Vj2Z@IUgJYJ4l4zWGl1Tb91
+!s100 76DXjI>OL1fOKRoGN];:70
+R7
+33
+!s110 1496935819
+!i10b 1
+!s108 1496935819.000000
+!s90 -reportprogress|300|-2008|-work|my_lib|D:/git/deleta/SKOLAAAALAMCU/CPU/lib/types.vhd|
+!s107 D:/git/deleta/SKOLAAAALAMCU/CPU/lib/types.vhd|
+!i113 1
+R34
+R13

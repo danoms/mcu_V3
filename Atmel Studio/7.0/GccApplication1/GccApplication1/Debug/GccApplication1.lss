@@ -1,0 +1,156 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000bc  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800040  00800040  00000110  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000110  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000140  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  0000017c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000356  00000000  00000000  0000019c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000002e5  00000000  00000000  000004f2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000130  00000000  00000000  000007d7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  00000908  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000237  00000000  00000000  0000093c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000048  00000000  00000000  00000b73  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00000bbb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	10 c0       	rjmp	.+32     	; 0x24 <__bad_interrupt>
+   4:	0f c0       	rjmp	.+30     	; 0x24 <__bad_interrupt>
+   6:	0e c0       	rjmp	.+28     	; 0x24 <__bad_interrupt>
+   8:	0d c0       	rjmp	.+26     	; 0x24 <__bad_interrupt>
+   a:	0c c0       	rjmp	.+24     	; 0x24 <__bad_interrupt>
+   c:	0b c0       	rjmp	.+22     	; 0x24 <__bad_interrupt>
+   e:	0a c0       	rjmp	.+20     	; 0x24 <__bad_interrupt>
+  10:	09 c0       	rjmp	.+18     	; 0x24 <__bad_interrupt>
+  12:	08 c0       	rjmp	.+16     	; 0x24 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 27       	eor	r17, r17
+  16:	1f bf       	out	0x3f, r17	; 63
+  18:	cf e5       	ldi	r28, 0x5F	; 95
+  1a:	d0 e0       	ldi	r29, 0x00	; 0
+  1c:	de bf       	out	0x3e, r29	; 62
+  1e:	cd bf       	out	0x3d, r28	; 61
+  20:	02 d0       	rcall	.+4      	; 0x26 <main>
+  22:	4a c0       	rjmp	.+148    	; 0xb8 <_exit>
+
+00000024 <__bad_interrupt>:
+  24:	ed cf       	rjmp	.-38     	; 0x0 <__vectors>
+
+00000026 <main>:
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+  26:	cf 93       	push	r28
+  28:	df 93       	push	r29
+  2a:	00 d0       	rcall	.+0      	; 0x2c <main+0x6>
+  2c:	00 d0       	rcall	.+0      	; 0x2e <main+0x8>
+  2e:	00 d0       	rcall	.+0      	; 0x30 <main+0xa>
+  30:	cd b7       	in	r28, 0x3d	; 61
+  32:	de b7       	in	r29, 0x3e	; 62
+   volatile unsigned int a,b,c;
+   a = 200;
+  34:	48 ec       	ldi	r20, 0xC8	; 200
+  36:	50 e0       	ldi	r21, 0x00	; 0
+  38:	ce 5f       	subi	r28, 0xFE	; 254
+  3a:	df 4f       	sbci	r29, 0xFF	; 255
+  3c:	58 83       	st	Y, r21
+  3e:	4a 93       	st	-Y, r20
+  40:	c1 50       	subi	r28, 0x01	; 1
+  42:	d0 40       	sbci	r29, 0x00	; 0
+   b = 145;
+  44:	41 e9       	ldi	r20, 0x91	; 145
+  46:	50 e0       	ldi	r21, 0x00	; 0
+  48:	cc 5f       	subi	r28, 0xFC	; 252
+  4a:	df 4f       	sbci	r29, 0xFF	; 255
+  4c:	58 83       	st	Y, r21
+  4e:	4a 93       	st	-Y, r20
+  50:	c3 50       	subi	r28, 0x03	; 3
+  52:	d0 40       	sbci	r29, 0x00	; 0
+   c = 0;
+  54:	ca 5f       	subi	r28, 0xFA	; 250
+  56:	df 4f       	sbci	r29, 0xFF	; 255
+  58:	18 83       	st	Y, r17
+  5a:	1a 93       	st	-Y, r17
+  5c:	c5 50       	subi	r28, 0x05	; 5
+  5e:	d0 40       	sbci	r29, 0x00	; 0
+    while (1) 
+    {
+		if (c != 0)
+  60:	cb 5f       	subi	r28, 0xFB	; 251
+  62:	df 4f       	sbci	r29, 0xFF	; 255
+  64:	49 91       	ld	r20, Y+
+  66:	58 81       	ld	r21, Y
+  68:	c6 50       	subi	r28, 0x06	; 6
+  6a:	d0 40       	sbci	r29, 0x00	; 0
+  6c:	45 2b       	or	r20, r21
+  6e:	79 f0       	breq	.+30     	; 0x8e <__stack+0x2f>
+		{
+			c--;
+  70:	cb 5f       	subi	r28, 0xFB	; 251
+  72:	df 4f       	sbci	r29, 0xFF	; 255
+  74:	49 91       	ld	r20, Y+
+  76:	58 81       	ld	r21, Y
+  78:	c6 50       	subi	r28, 0x06	; 6
+  7a:	d0 40       	sbci	r29, 0x00	; 0
+  7c:	41 50       	subi	r20, 0x01	; 1
+  7e:	51 0b       	sbc	r21, r17
+  80:	ca 5f       	subi	r28, 0xFA	; 250
+  82:	df 4f       	sbci	r29, 0xFF	; 255
+  84:	58 83       	st	Y, r21
+  86:	4a 93       	st	-Y, r20
+  88:	c5 50       	subi	r28, 0x05	; 5
+  8a:	d0 40       	sbci	r29, 0x00	; 0
+  8c:	e9 cf       	rjmp	.-46     	; 0x60 <__stack+0x1>
+		} 
+		else
+		{
+			c = a + b;
+  8e:	cf 5f       	subi	r28, 0xFF	; 255
+  90:	df 4f       	sbci	r29, 0xFF	; 255
+  92:	69 91       	ld	r22, Y+
+  94:	78 81       	ld	r23, Y
+  96:	c2 50       	subi	r28, 0x02	; 2
+  98:	d0 40       	sbci	r29, 0x00	; 0
+  9a:	cd 5f       	subi	r28, 0xFD	; 253
+  9c:	df 4f       	sbci	r29, 0xFF	; 255
+  9e:	49 91       	ld	r20, Y+
+  a0:	58 81       	ld	r21, Y
+  a2:	c4 50       	subi	r28, 0x04	; 4
+  a4:	d0 40       	sbci	r29, 0x00	; 0
+  a6:	46 0f       	add	r20, r22
+  a8:	57 1f       	adc	r21, r23
+  aa:	ca 5f       	subi	r28, 0xFA	; 250
+  ac:	df 4f       	sbci	r29, 0xFF	; 255
+  ae:	58 83       	st	Y, r21
+  b0:	4a 93       	st	-Y, r20
+  b2:	c5 50       	subi	r28, 0x05	; 5
+  b4:	d0 40       	sbci	r29, 0x00	; 0
+  b6:	d4 cf       	rjmp	.-88     	; 0x60 <__stack+0x1>
+
+000000b8 <_exit>:
+  b8:	f8 94       	cli
+
+000000ba <__stop_program>:
+  ba:	ff cf       	rjmp	.-2      	; 0xba <__stop_program>
