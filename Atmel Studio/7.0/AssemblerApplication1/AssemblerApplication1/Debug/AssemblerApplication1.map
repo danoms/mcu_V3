@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  D:\GIT\github\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jun 08 22:31:33 2017
+AVRASM ver. 2.2.6  D:\git\hub_git\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Fri Jun 09 11:06:51 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -209,3 +209,4 @@ EQU  WDTaddr      00000008
 EQU  VLMaddr      00000009
 EQU  INT_VECTORS_SIZE 0000000a
 CSEG pushy        0000000d
+CSEG outty        00000010

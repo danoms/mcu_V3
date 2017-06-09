@@ -134,56 +134,56 @@ R25
 R12
 R13
 Pinstruction_set
-Z26 DPx6 my_lib 5 types 0 22 `LRWQPDzf9<P4^QZ89M@z1
+Z26 DPx6 my_lib 5 types 0 22 `gEXf@7b2IHFWd;a5zYS42
 R2
 R3
 R4
-Z27 w1496952590
-Z28 dD:/git/github/mcu_v3/cpU/modelsim
-Z29 8D:/GIT/github/mcu_V3/CPU/lib/instruction_set.vhd
-Z30 FD:/GIT/github/mcu_V3/CPU/lib/instruction_set.vhd
+Z27 w1497005339
+Z28 dD:/git/hub_git/mcu_V3/cpu/modelsim
+Z29 8D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd
+Z30 FD:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd
 l0
 L7
-V7<D49>n[8n1GeZYLAc7bL3
-!s100 `=T?=9oHmETOTj?A?IS>Z1
-Z31 OV;C;10.5b;63
+VG=HfI@@QcE=3VaAKMbY;n2
+!s100 zDZ4@iI^78bC;6R<;D4KP3
+R7
 33
 b1
-Z32 !s110 1496954877
+Z31 !s110 1497014450
 !i10b 1
-Z33 !s108 1496954876.000000
-Z34 !s90 -reportprogress|300|-2008|-work|my_lib|D:/GIT/github/mcu_V3/CPU/lib/instruction_set.vhd|
-Z35 !s107 D:/GIT/github/mcu_V3/CPU/lib/instruction_set.vhd|
+Z32 !s108 1497014450.000000
+Z33 !s90 -reportprogress|300|-2008|-work|my_lib|D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd|
+Z34 !s107 D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd|
 !i113 1
-Z36 o-2008 -work my_lib
+Z35 o-2008 -work my_lib -O0
 R13
 Bbody
-Z37 DPx4 work 15 instruction_set 0 22 7<D49>n[8n1GeZYLAc7bL3
+Z36 DPx4 work 15 instruction_set 0 22 G=HfI@@QcE=3VaAKMbY;n2
 R26
 R2
 R3
 R4
 l0
-L103
-Z38 VEKazi[19@]ie^Q`Za;=zQ2
-Z39 !s100 MDA23o^D?fzCDh7Q2ZRY>1
-R31
+L119
+Z37 VY`IeE3gDUFaP0Io??nFYY3
+Z38 !s100 moT5JcKi41I;INnEGGMIi1
+R7
 33
-R32
+R31
 !i10b 1
+R32
 R33
 R34
-R35
 !i113 1
-R36
+R35
 R13
 Ereg
-Z40 w1496401247
+Z39 w1496401247
 R3
 R4
 R0
-Z41 8../lib/basic/reg.vhd
-Z42 F../lib/basic/reg.vhd
+Z40 8../lib/basic/reg.vhd
+Z41 F../lib/basic/reg.vhd
 l0
 L4
 VfOB2Fok15iPibgjY]A[ih0
@@ -193,8 +193,8 @@ R7
 R8
 !i10b 1
 R9
-Z43 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/reg.vhd|
-Z44 !s107 ../lib/basic/reg.vhd|
+Z42 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/reg.vhd|
+Z43 !s107 ../lib/basic/reg.vhd|
 !i113 1
 R12
 R13
@@ -211,19 +211,19 @@ R7
 R8
 !i10b 1
 R9
+R42
 R43
-R44
 !i113 1
 R12
 R13
 Eregu
-Z45 w1496400952
+Z44 w1496400952
 R2
 R3
 R4
 R0
-Z46 8../lib/basic/regU.vhd
-Z47 F../lib/basic/regU.vhd
+Z45 8../lib/basic/regU.vhd
+Z46 F../lib/basic/regU.vhd
 l0
 L5
 Vk7gD1AeAb[U23R`^_i?5>2
@@ -233,8 +233,8 @@ R7
 R8
 !i10b 1
 R9
-Z48 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/regU.vhd|
-Z49 !s107 ../lib/basic/regU.vhd|
+Z47 !s90 -reportprogress|300|-2008|-work|rtl_work|../lib/basic/regU.vhd|
+Z48 !s107 ../lib/basic/regU.vhd|
 !i113 1
 R12
 R13
@@ -252,8 +252,8 @@ R7
 R8
 !i10b 1
 R9
+R47
 R48
-R49
 !i113 1
 R12
 R13
@@ -261,21 +261,21 @@ Ptypes
 R2
 R3
 R4
-w1496949961
+w1497008075
 R28
-8D:/GIT/github/mcu_V3/CPU/lib/types.vhd
-FD:/GIT/github/mcu_V3/CPU/lib/types.vhd
+8D:/git/hub_git/mcu_V3/CPU/lib/types.vhd
+FD:/git/hub_git/mcu_V3/CPU/lib/types.vhd
 l0
 L6
-V`LRWQPDzf9<P4^QZ89M@z1
-!s100 14EP:U_zJ^BZF?Y19DNh]1
-R31
+V`gEXf@7b2IHFWd;a5zYS42
+!s100 bUhHFU9neELSQWbPYk1be2
+R7
 33
-!s110 1496954876
+R31
 !i10b 1
-R33
-!s90 -reportprogress|300|-2008|-work|my_lib|D:/GIT/github/mcu_V3/CPU/lib/types.vhd|
-!s107 D:/GIT/github/mcu_V3/CPU/lib/types.vhd|
+R32
+!s90 -reportprogress|300|-2008|-work|my_lib|D:/git/hub_git/mcu_V3/CPU/lib/types.vhd|
+!s107 D:/git/hub_git/mcu_V3/CPU/lib/types.vhd|
 !i113 1
-R36
+R35
 R13

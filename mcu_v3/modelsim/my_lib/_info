@@ -1,0 +1,707 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/git/hub_git/mcu_V3/mcu_v3/modelsim
+Eadder
+Z0 w1496990293
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dd:/git/hub_git/mcu_v3/mcu_v3/modelsim
+Z5 8D:/git/hub_git/mcu_V3/CPU/lib/basic/adder.vhd
+Z6 FD:/git/hub_git/mcu_V3/CPU/lib/basic/adder.vhd
+l0
+L5
+Vn12@LncSO3[ZGfYL::Kf^0
+!s100 Z=Llz][8Oj^j8DgO7Y9n`2
+Z7 OW;C;10.5c;63
+33
+Z8 !s110 1497014968
+!i10b 1
+Z9 !s108 1497014968.000000
+Z10 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/adder.vhd|
+Z11 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/adder.vhd|
+!i113 1
+Z12 o-2008 -work rtl_work -O0
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R1
+R2
+R3
+DEx4 work 5 adder 0 22 n12@LncSO3[ZGfYL::Kf^0
+l12
+L11
+V4GX:=4HM^XQln[9ajliFe3
+!s100 efILjM];252WGD>bSlHJc3
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Earithmetic_logic_unit_v2
+Z14 w1497005036
+Z15 DPx6 my_lib 15 instruction_set 0 22 G=HfI@@QcE=3VaAKMbY;n2
+Z16 DPx6 my_lib 5 types 0 22 `gEXf@7b2IHFWd;a5zYS42
+R1
+R2
+R3
+R4
+Z17 8D:/git/hub_git/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd
+Z18 FD:/git/hub_git/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd
+l0
+L7
+V`VoEzM^9^D<i4=Ja>4^nN1
+!s100 F]cVlRa4X]Je0KJ@HEHI11
+R7
+33
+Z19 !s110 1497014970
+!i10b 1
+Z20 !s108 1497014969.000000
+Z21 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd|
+Z22 !s107 D:/git/hub_git/mcu_V3/ALU/src/arithmetic_logic_unit_v2.vhd|
+!i113 1
+R12
+R13
+Aavr
+R15
+R16
+R1
+R2
+R3
+DEx4 work 24 arithmetic_logic_unit_v2 0 22 `VoEzM^9^D<i4=Ja>4^nN1
+l21
+L19
+V3>Rnh6aOcEe^l>Sb1[lk41
+!s100 PNCIlIb1@VARbZ6Wf:g013
+R7
+33
+R19
+!i10b 1
+R20
+R21
+R22
+!i113 1
+R12
+R13
+Ecpu
+Z23 w1497014965
+R16
+R1
+R2
+R3
+R4
+Z24 8D:/git/hub_git/mcu_V3/CPU/src/CPU.vhd
+Z25 FD:/git/hub_git/mcu_V3/CPU/src/CPU.vhd
+l0
+L6
+V8`Bo:V9S`i_zi]D4V7ZaH2
+!s100 5lKfS1zJif12<79D;9=911
+R7
+33
+Z26 !s110 1497014969
+!i10b 1
+R20
+Z27 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/src/CPU.vhd|
+Z28 !s107 D:/git/hub_git/mcu_V3/CPU/src/CPU.vhd|
+!i113 1
+R12
+R13
+Artl
+R16
+R1
+R2
+R3
+DEx4 work 3 cpu 0 22 8`Bo:V9S`i_zi]D4V7ZaH2
+l139
+L20
+V3:oWWIM9NY`CR2]JR:_740
+!s100 R=MA=[g0UiFJk7<EHZ5^92
+R7
+33
+R26
+!i10b 1
+R20
+R27
+R28
+!i113 1
+R12
+R13
+Egeneral_purpose_register_v2
+Z29 w1497002680
+R16
+R1
+R2
+R3
+R4
+Z30 8D:/git/hub_git/mcu_V3/GPR/src/general_purpose_register_v2.vhd
+Z31 FD:/git/hub_git/mcu_V3/GPR/src/general_purpose_register_v2.vhd
+l0
+L6
+Vb`EZI0GH7AWRh>7LieVeD2
+!s100 e_jfOBA1D^bNYEgP7Xo0k3
+R7
+33
+R26
+!i10b 1
+R20
+Z32 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/GPR/src/general_purpose_register_v2.vhd|
+Z33 !s107 D:/git/hub_git/mcu_V3/GPR/src/general_purpose_register_v2.vhd|
+!i113 1
+R12
+R13
+Aavr
+R16
+R1
+R2
+R3
+DEx4 work 27 general_purpose_register_v2 0 22 b`EZI0GH7AWRh>7LieVeD2
+l37
+L30
+V8K8EA4UP`4mObz5I[f9_j0
+!s100 Y>@:1QH`^VWFQ]8Jm5igF0
+R7
+33
+R26
+!i10b 1
+R20
+R32
+R33
+!i113 1
+R12
+R13
+Einstruction_decoder_v2
+Z34 w1497003900
+R16
+R1
+R2
+R3
+R4
+Z35 8D:/git/hub_git/mcu_V3/instruction_decoder_v2/src/instruction_decoder_v2.vhd
+Z36 FD:/git/hub_git/mcu_V3/instruction_decoder_v2/src/instruction_decoder_v2.vhd
+l0
+L6
+VbbSkgRVA1HcFPLYKCAM4J1
+!s100 mhIQ=OBhJI7H0<VHk4^BR0
+R7
+33
+R26
+!i10b 1
+R20
+Z37 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/instruction_decoder_v2/src/instruction_decoder_v2.vhd|
+Z38 !s107 D:/git/hub_git/mcu_V3/instruction_decoder_v2/src/instruction_decoder_v2.vhd|
+!i113 1
+R12
+R13
+Asomething
+R16
+R1
+R2
+R3
+DEx4 work 22 instruction_decoder_v2 0 22 bbSkgRVA1HcFPLYKCAM4J1
+l40
+L31
+V3RNOj=<5[EQbPRTmGTPPf3
+!s100 3]SlKbz[?F_2n^X70CG^I0
+R7
+33
+R26
+!i10b 1
+R20
+R37
+R38
+!i113 1
+R12
+R13
+Einstruction_memory
+Z39 w1497011223
+R16
+R1
+R2
+R3
+R4
+Z40 8D:/git/hub_git/mcu_V3/mcu_v3/src/instruction_memory.vhd
+Z41 FD:/git/hub_git/mcu_V3/mcu_v3/src/instruction_memory.vhd
+l0
+L6
+VD:8c0[^4VgzfbW02?3Un>1
+!s100 c^o;CjZXB7fo9nP4d]LK90
+R7
+33
+R26
+!i10b 1
+R20
+Z42 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/mcu_v3/src/instruction_memory.vhd|
+Z43 !s107 D:/git/hub_git/mcu_V3/mcu_v3/src/instruction_memory.vhd|
+!i113 1
+R12
+R13
+Artl
+R16
+R1
+R2
+R3
+DEx4 work 18 instruction_memory 0 22 D:8c0[^4VgzfbW02?3Un>1
+l38
+L14
+Vb5jaNbccK@Qg?l;g:Y3TJ1
+!s100 S<e_K7cfhiBhQTUnAS=5<3
+R7
+33
+R26
+!i10b 1
+R20
+R42
+R43
+!i113 1
+R12
+R13
+Pinstruction_set
+R16
+R1
+R2
+R3
+Z44 w1497005339
+R4
+Z45 8D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd
+Z46 FD:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd
+l0
+L7
+VG=HfI@@QcE=3VaAKMbY;n2
+!s100 zDZ4@iI^78bC;6R<;D4KP3
+R7
+33
+b1
+Z47 !s110 1497019906
+!i10b 1
+Z48 !s108 1497019906.000000
+Z49 !s90 -reportprogress|300|-2008|-work|my_lib|D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd|
+Z50 !s107 D:/git/hub_git/mcu_V3/CPU/lib/instruction_set.vhd|
+!i113 1
+Z51 o-2008 -work my_lib -O0
+R13
+Bbody
+Z52 DPx4 work 15 instruction_set 0 22 G=HfI@@QcE=3VaAKMbY;n2
+R16
+R1
+R2
+R3
+l0
+L119
+Z53 VY`IeE3gDUFaP0Io??nFYY3
+Z54 !s100 moT5JcKi41I;INnEGGMIi1
+R7
+33
+R47
+!i10b 1
+R48
+R49
+R50
+!i113 1
+R51
+R13
+Eio
+Z55 w1497011197
+R16
+R1
+R2
+R3
+R4
+Z56 8D:/git/hub_git/mcu_V3/mcu_v3/src/IO.vhd
+Z57 FD:/git/hub_git/mcu_V3/mcu_v3/src/IO.vhd
+l0
+L6
+VSGgBon=gnDZnbN=[G4ag51
+!s100 8c6H7d];U5_YnGEV1JL3E0
+R7
+33
+R26
+!i10b 1
+R20
+Z58 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/mcu_v3/src/IO.vhd|
+Z59 !s107 D:/git/hub_git/mcu_V3/mcu_v3/src/IO.vhd|
+!i113 1
+R12
+R13
+Artl
+R16
+R1
+R2
+R3
+DEx4 work 2 io 0 22 SGgBon=gnDZnbN=[G4ag51
+l24
+L17
+VGjczo:H:IBcagl8Jdgdj?1
+!s100 ZjUn^bC:GWN^mXO8<GNQW3
+R7
+33
+R26
+!i10b 1
+R20
+R58
+R59
+!i113 1
+R12
+R13
+Emcu_v3
+Z60 w1497013789
+R16
+R1
+R2
+R3
+R4
+Z61 8D:/git/hub_git/mcu_V3/mcu_v3/src/mcu_v3.vhd
+Z62 FD:/git/hub_git/mcu_V3/mcu_v3/src/mcu_v3.vhd
+l0
+L6
+VKZOCb;BI`Wj<;1c<oTOON3
+!s100 iAH]I`F9@0<VR5lJfP8j@2
+R7
+33
+R26
+!i10b 1
+R20
+Z63 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/mcu_v3/src/mcu_v3.vhd|
+Z64 !s107 D:/git/hub_git/mcu_V3/mcu_v3/src/mcu_v3.vhd|
+!i113 1
+R12
+R13
+Artl
+R16
+R1
+R2
+R3
+DEx4 work 6 mcu_v3 0 22 KZOCb;BI`Wj<;1c<oTOON3
+l58
+L13
+V^HfE?]D0`^EU7;hj[Pgam3
+!s100 :eed?=>nz9hEIKfE[PZ662
+R7
+33
+R26
+!i10b 1
+R20
+R63
+R64
+!i113 1
+R12
+R13
+Emcu_v3_tb
+Z65 w1497012643
+R1
+R2
+R3
+R4
+Z66 8D:/git/hub_git/mcu_V3/mcu_v3/work/../tb/mcu_v3_tb.vhd
+Z67 FD:/git/hub_git/mcu_V3/mcu_v3/work/../tb/mcu_v3_tb.vhd
+l0
+L5
+V9CnzO7DiBIKoA3iAhcaAT2
+!s100 ?:gnYedS3o??D180l:J:R3
+R7
+33
+R19
+!i10b 1
+Z68 !s108 1497014970.000000
+Z69 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/mcu_v3/work/../tb/mcu_v3_tb.vhd|
+Z70 !s107 D:/git/hub_git/mcu_V3/mcu_v3/work/../tb/mcu_v3_tb.vhd|
+!i113 1
+R12
+R13
+Atesty
+R1
+R2
+R3
+DEx4 work 9 mcu_v3_tb 0 22 9CnzO7DiBIKoA3iAhcaAT2
+l23
+L9
+V<2KDloiBV?0Z19Uz1WOYm0
+!s100 ChnJ`XGUo_m_cdh4^nOSV2
+R7
+33
+R19
+!i10b 1
+R68
+R69
+R70
+!i113 1
+R12
+R13
+Emux2
+R0
+R1
+R2
+R3
+R4
+Z71 8D:/git/hub_git/mcu_V3/CPU/lib/basic/mux2.vhd
+Z72 FD:/git/hub_git/mcu_V3/CPU/lib/basic/mux2.vhd
+l0
+L5
+V:R^l[ARKl0[:z4H[<g>@X0
+!s100 D0LQH`VG7b9^_4HWZX2QL3
+R7
+33
+R8
+!i10b 1
+R9
+Z73 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/mux2.vhd|
+Z74 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/mux2.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 4 mux2 0 22 :R^l[ARKl0[:z4H[<g>@X0
+l13
+L12
+VGnP7j^cKlXQ0WkJ]UUdiP1
+!s100 >3=4Kh;YJHbYezPKTgRiX3
+R7
+33
+R8
+!i10b 1
+R9
+R73
+R74
+!i113 1
+R12
+R13
+Emux4
+R0
+R1
+R2
+R3
+R4
+Z75 8D:/git/hub_git/mcu_V3/CPU/lib/basic/mux4.vhd
+Z76 FD:/git/hub_git/mcu_V3/CPU/lib/basic/mux4.vhd
+l0
+L5
+VYQY3e2GNl3R[CQjbgUF?c1
+!s100 D3L;I5X;3TVaaDamdR^1A1
+R7
+33
+R8
+!i10b 1
+R9
+Z77 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/mux4.vhd|
+Z78 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/mux4.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 4 mux4 0 22 YQY3e2GNl3R[CQjbgUF?c1
+l15
+L14
+V3Kz`MJc22`^G?fz;mCm5M3
+!s100 1dRO`OglW`78?[Ah0kRfE2
+R7
+33
+R8
+!i10b 1
+R9
+R77
+R78
+!i113 1
+R12
+R13
+Eram
+Z79 w1497011042
+R16
+R1
+R2
+R3
+R4
+Z80 8D:/git/hub_git/mcu_V3/mcu_v3/src/RAM.vhd
+Z81 FD:/git/hub_git/mcu_V3/mcu_v3/src/RAM.vhd
+l0
+L6
+V2W9ZilKP^hEU6>C9C4MoC2
+!s100 F:BS:=PaaQ5;_Se4nNNI03
+R7
+33
+R26
+!i10b 1
+R20
+Z82 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/mcu_v3/src/RAM.vhd|
+Z83 !s107 D:/git/hub_git/mcu_V3/mcu_v3/src/RAM.vhd|
+!i113 1
+R12
+R13
+Artl
+R16
+R1
+R2
+R3
+DEx4 work 3 ram 0 22 2W9ZilKP^hEU6>C9C4MoC2
+l24
+L17
+VN^c@g99>=R:b=jTnXfOGe2
+!s100 ?HMa5hXM9YUcYdbcX:>]J0
+R7
+33
+R26
+!i10b 1
+R20
+R82
+R83
+!i113 1
+R12
+R13
+Ereg
+R0
+R2
+R3
+R4
+Z84 8D:/git/hub_git/mcu_V3/CPU/lib/basic/reg.vhd
+Z85 FD:/git/hub_git/mcu_V3/CPU/lib/basic/reg.vhd
+l0
+L4
+VfOB2Fok15iPibgjY]A[ih0
+!s100 Un>4]>mXI5?;bcg:oYUU]0
+R7
+33
+R8
+!i10b 1
+R9
+Z86 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/reg.vhd|
+Z87 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/reg.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+DEx4 work 3 reg 0 22 fOB2Fok15iPibgjY]A[ih0
+l14
+L13
+V3f^XnF=ZL`H0Ijg4XW`VO2
+!s100 I8kZdZGY[8HC8`m:?OW3A2
+R7
+33
+R8
+!i10b 1
+R9
+R86
+R87
+!i113 1
+R12
+R13
+Eregu
+R0
+R1
+R2
+R3
+R4
+Z88 8D:/git/hub_git/mcu_V3/CPU/lib/basic/regU.vhd
+Z89 FD:/git/hub_git/mcu_V3/CPU/lib/basic/regU.vhd
+l0
+L5
+V?4Ca8ieanenBF7[UGQedg1
+!s100 j`kQP;VVJojk16EW8K2l70
+R7
+33
+R8
+!i10b 1
+R9
+Z90 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/regU.vhd|
+Z91 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/regU.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 4 regu 0 22 ?4Ca8ieanenBF7[UGQedg1
+l15
+L14
+VfCR8ECCH:gz[P6o_LR>nn3
+!s100 2:YVbAm<6fB6`cG:Sj<:U2
+R7
+33
+R8
+!i10b 1
+R9
+R90
+R91
+!i113 1
+R12
+R13
+Esignext
+R0
+R1
+R2
+R3
+R4
+Z92 8D:/git/hub_git/mcu_V3/CPU/lib/basic/signext.vhd
+Z93 FD:/git/hub_git/mcu_V3/CPU/lib/basic/signext.vhd
+l0
+L5
+V4R]RiN<WZ:4Dc^U[;YB7U0
+!s100 ?jZ2nk?RjN0`fB<ADH6dE2
+R7
+33
+R8
+!i10b 1
+R9
+Z94 !s90 -reportprogress|300|-2008|-work|rtl_work|D:/git/hub_git/mcu_V3/CPU/lib/basic/signext.vhd|
+Z95 !s107 D:/git/hub_git/mcu_V3/CPU/lib/basic/signext.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 7 signext 0 22 4R]RiN<WZ:4Dc^U[;YB7U0
+l11
+L10
+V?kMc5oR;6`LXkgNKB_D]k1
+!s100 Z^QXABm5Y8:Pa9cFdGzl52
+R7
+33
+R8
+!i10b 1
+R9
+R94
+R95
+!i113 1
+R12
+R13
+Ptypes
+R1
+R2
+R3
+w1497008075
+R4
+8D:/git/hub_git/mcu_V3/CPU/lib/types.vhd
+FD:/git/hub_git/mcu_V3/CPU/lib/types.vhd
+l0
+L6
+V`gEXf@7b2IHFWd;a5zYS42
+!s100 bUhHFU9neELSQWbPYk1be2
+R7
+33
+!s110 1497019905
+!i10b 1
+!s108 1497019905.000000
+!s90 -reportprogress|300|-2008|-work|my_lib|D:/git/hub_git/mcu_V3/CPU/lib/types.vhd|
+!s107 D:/git/hub_git/mcu_V3/CPU/lib/types.vhd|
+!i113 1
+R51
+R13

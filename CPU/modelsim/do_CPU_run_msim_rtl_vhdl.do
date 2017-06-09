@@ -1,6 +1,5 @@
 transcript on
-set WORK_DIR "D:/GIT/github/mcu_V3/CPU"
-set ALL_DIR "D:/GIT/github/mcu_V3"
+set ALL_DIR "D:/git/hub_git/mcu_V3"
 
 vlib rtl_work
 vmap work rtl_work
@@ -50,12 +49,17 @@ add wave -position end  sim:/cpu_tb/uut/pc_offset
 add wave -position end  sim:/cpu_tb/uut/PC_offset_s
 add wave -position end  sim:/cpu_tb/uut/SP
 add wave -position end  sim:/cpu_tb/uut/SP_next
+add wave -position end  sim:/cpu_tb/uut/io_addr
+add wave -position 17  sim:/cpu_tb/uut/xd
+add wave -position 18  sim:/cpu_tb/uut/yd
+add wave -position 19  sim:/cpu_tb/uut/zd
 
 view structure
 view signals
-run 1.1 us
+run 2.5 us
 
 radix -unsigned
+radix signal sim:/cpu_tb/instr_i hexadecimal
 radix signal sim:/cpu_tb/uut/Rd_addr unsigned
 radix signal sim:/cpu_tb/uut/Rs_addr unsigned
 wave zoom full

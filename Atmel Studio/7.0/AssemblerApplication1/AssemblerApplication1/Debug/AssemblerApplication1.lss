@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  D:\GIT\github\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jun 08 22:31:33 2017
+AVRASM ver. 2.2.6  D:\git\hub_git\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Fri Jun 09 11:06:51 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\avrasm\inc\tn4def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\avrasm\inc\tn4def.inc'
@@ -403,11 +403,20 @@ AVRASM ver. 2.2.6  D:\GIT\github\mcu_V3\Atmel Studio\7.0\AssemblerApplication1\A
 00000a c002                      rjmp pushy
 00000b d001                      rcall pushy
 00000c 0000                      nop
+                                 ;movw R16,R20		; 
+                                 ;adiw R28,61
                                  pushy : 
 00000d 934f                      push R20		; RAM(SP0) = 15
 00000e 933f                      push R19		; RAM(SP1) = 5
-00000f 910f                      pop R16			; R16 = RAM(SP1) = 5
-000010 911f                      pop R17			; R17 = RAM(SP0) = 15
+00000f d000                      rcall outty
+                                 
+                                 
+                                 outty :
+000010 bb04                      out 20,R16
+000011 910f                      pop R16			; R16 = RAM(SP1) = 5
+000012 911f                      pop R17			; R17 = RAM(SP0) = 15
+000013 3149                      cpi R20,25		; 15 < 20
+000014 f3c4                      brlt pushy
 
 
 RESOURCE USE INFORMATION
@@ -427,7 +436,7 @@ counted separately from r26..r31 here.
 "ATtiny4" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   5 r17:   8 r18:   0 r19:   3 r20:   4 
+r13:   0 r14:   0 r15:   0 r16:   6 r17:   8 r18:   0 r19:   3 r20:   5 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 4 out of 35 (11.4%)
@@ -436,26 +445,26 @@ Registers used: 4 out of 35 (11.4%)
 .lds.l:   0 .sts.l:   0 adc   :   1 add   :   1 and   :   0 andi  :   0 
 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 brcc  :   0 
 brcs  :   0 breq  :   0 brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 
-brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 brne  :   0 brpl  :   0 
+brie  :   0 brlo  :   0 brlt  :   1 brmi  :   0 brne  :   0 brpl  :   0 
 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 
 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 clh   :   0 cli   :   0 
 cln   :   0 clr   :   0 cls   :   0 clt   :   0 clv   :   0 clz   :   0 
-com   :   0 cp    :   0 cpc   :   0 cpi   :   0 cpse  :   0 dec   :   0 
+com   :   0 cp    :   0 cpc   :   0 cpi   :   1 cpse  :   0 dec   :   0 
 eor   :   2 icall :   0 ijmp  :   0 in    :   0 inc   :   0 ld    :   0 
 ldd   :   0 ldi   :   2 lds   :   0 lsl   :   0 lsr   :   0 mov   :   2 
-neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   0 pop   :   2 
-push  :   2 rcall :   1 ret   :   0 reti  :   0 rjmp  :   1 rol   :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   1 pop   :   2 
+push  :   2 rcall :   2 ret   :   0 reti  :   0 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   1 sbi   :   0 sbic  :   0 sbis  :   0 
 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 
 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 
 sleep :   0 st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   1 
 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 12 out of 99 (12.1%)
+Instructions used: 15 out of 99 (15.2%)
 
 "ATtiny4" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000022     34      0     34     512   6.6%
+[.cseg] 0x000000 0x00002a     42      0     42     512   8.2%
 [.dseg] 0x000040 0x000060      0      0      0      32   0.0%
 [.eseg] 0x000000 0x000000      0      0      0       0      -
 

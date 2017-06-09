@@ -98,6 +98,22 @@ package instruction_set is
 	-- Id: 17.0
 	procedure rcall (signal a_i, b_i 		: in unsigned(15 downto 0);
 						signal result			: out unsigned(15 downto 0));
+
+	--Id: 18.0
+	procedure outt(signal a_i		: in unsigned(15 downto 0);
+						signal result 	: out unsigned(15 downto 0));
+
+	-- Id: 19.0
+	procedure brlt(signal a_i, b_i 	: in unsigned(15 downto 0);
+						signal result 		: out unsigned(15 downto 0));
+
+	-- Id: 20.0
+	procedure sum(signal a_i, b_i 	: in unsigned(15 downto 0);
+						signal result 		: out unsigned(15 downto 0));
+
+	-- Id: 21.0
+	procedure sum_plus1(signal a_i, b_i 	: in unsigned(15 downto 0);
+								signal result 		: out unsigned(15 downto 0));
 end package;
 
 package body instruction_set is
@@ -165,15 +181,15 @@ package body instruction_set is
 	-- result
 		tmp_R 			:= a_i - b_i;
 
-	--!!! set flags
-		tmp_SREG_o(H)	:= (a_i(3)and b_i(3))or(b_i(3)and not(b_i(3)))or(not(tmp_R(3))and a_i(3));
-		tmp_SREG_o(S)	:= tmp_R(7) xor ((a_i(7)and b_i(7)and not(tmp_R(7)))or(not(a_i(7))and not(b_i(7))and tmp_R(7)));
-		tmp_SREG_o(V)	:= (a_i(7)and b_i(7)and not(tmp_R(7)))or(not(a_i(7))and not(b_i(7))and tmp_R(7));
-		tmp_SREG_o(N)	:= tmp_R(7);
-		tmp_SREG_o(Z)	:= not(tmp_R(7))and not(tmp_R(6))and not(tmp_R(5))and not(tmp_R(4)) and
+	--!!! set flags DONE
+		tmp_SREG_o(V)	:= tmp_R(15) and not (a_i(7));
+		tmp_SREG_o(N)	:= tmp_R(15);
+		tmp_SREG_o(Z)	:= not(tmp_R(15))and not(tmp_R(14))and not(tmp_R(13))and not(tmp_R(12)) and
+								not(tmp_R(11))and not(tmp_R(10))and not(tmp_R(9))and not(tmp_R(8)) and
+								not(tmp_R(7))and not(tmp_R(6))and not(tmp_R(5))and not(tmp_R(4)) and
 								not(tmp_R(3))and not(tmp_R(2))and not(tmp_R(1))and not(tmp_R(0));
-		tmp_SREG_o(C)	:= (a_i(7)and b_i(7))or(b_i(7)and not(tmp_R(7)))or(not tmp_R(7)and a_i(7));
-
+		tmp_SREG_o(C)	:= tmp_R(15) and not(a_i(7));
+		tmp_SREG_o(S)	:= tmp_SREG_o(V) xor tmp_SREG_o(N);
 	-- out
 		result	<= tmp_R;
 		SREG_o	<= tmp_SREG_o;
@@ -283,13 +299,12 @@ package body instruction_set is
 
 	--!!! set flags
 		tmp_SREG_o(H)	:= (a_i(3)and b_i(3))or(b_i(3)and not(b_i(3)))or(not(tmp_R(3))and a_i(3));
-		tmp_SREG_o(S)	:= tmp_R(7) xor ((a_i(7)and b_i(7)and not(tmp_R(7)))or(not(a_i(7))and not(b_i(7))and tmp_R(7)));
-		tmp_SREG_o(V)	:= (a_i(7)and b_i(7)and not(tmp_R(7)))or(not(a_i(7))and not(b_i(7))and tmp_R(7));
+		tmp_SREG_o(V)	:= (a_i(7) and not(b_i(7)) and not(tmp_R(7))) or (not (a_i(7)) and b_i(7) and (tmp_R(7)));
 		tmp_SREG_o(N)	:= tmp_R(7);
 		tmp_SREG_o(Z)	:= not(tmp_R(7))and not(tmp_R(6))and not(tmp_R(5))and not(tmp_R(4)) and
 								not(tmp_R(3))and not(tmp_R(2))and not(tmp_R(1))and not(tmp_R(0));
 		tmp_SREG_o(C)	:= (a_i(7)and b_i(7))or(b_i(7)and not(tmp_R(7)))or(not tmp_R(7)and a_i(7));
-
+		tmp_SREG_o(S)	:= tmp_SREG_o(N) xor tmp_SREG_o(V);
 	-- out
 		result	<= tmp_R;
 		SREG_o	<= tmp_SREG_o;
@@ -457,12 +472,12 @@ package body instruction_set is
 	begin
 	-- result
 		tmp_R 			:= a_i or b_i;
-	-- set flags
+	-- set flags DONE
 		tmp_SREG_o(V)	:= '0';
 		tmp_SREG_o(N)	:= tmp_R(7);
-		tmp_SREG_o(S)	:= tmp_SREG_o(N) xor tmp_SREG_o(V);
 		tmp_SREG_o(Z)	:= not(tmp_R(7))and not(tmp_R(6))and not(tmp_R(5))and not(tmp_R(4)) and
 								not(tmp_R(3))and not(tmp_R(2))and not(tmp_R(1))and not(tmp_R(0));
+		tmp_SREG_o(S)	:= tmp_SREG_o(N) xor tmp_SREG_o(V);
 	-- out
 		result	<= tmp_R;
 		SREG_o	<= tmp_SREG_o;
@@ -482,6 +497,50 @@ package body instruction_set is
 	-- Id: 17.0
 	procedure rcall (signal a_i, b_i 		: in unsigned(15 downto 0);
 						signal result			: out unsigned(15 downto 0)) is
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i + b_i + 1;
+	-- out
+		result	<= tmp_R;
+	end procedure;
+
+	--Id: 18.0
+	procedure outt(signal a_i		: in unsigned(15 downto 0);
+						signal result 	: out unsigned(15 downto 0)) is
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i;
+	-- out
+		result	<= tmp_R;
+	end procedure;
+
+	-- Id: 19.0
+	procedure brlt(signal a_i, b_i 	: in unsigned(15 downto 0);
+						signal result 		: out unsigned(15 downto 0)) is
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i + b_i + 1;
+	-- out
+		result	<= tmp_R;
+	end procedure;
+
+	-- Id: 20.0
+	procedure sum(signal a_i, b_i 	: in unsigned(15 downto 0);
+						signal result 		: out unsigned(15 downto 0)) is
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i + b_i;
+	-- out
+		result	<= tmp_R;
+	end procedure;
+
+	-- Id: 21.0
+	procedure sum_plus1(signal a_i, b_i 	: in unsigned(15 downto 0);
+								signal result 		: out unsigned(15 downto 0)) is
 		variable tmp_R 		: unsigned(15 downto 0);
 	begin
 	-- result

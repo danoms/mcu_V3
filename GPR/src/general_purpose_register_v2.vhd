@@ -9,11 +9,11 @@ entity general_purpose_register_v2 is
 		clk	 		: in std_logic;
 		rst			: in std_logic;
 		en 			: in std_logic;
-		
+
 		ra1			: in unsigned(4 downto 0);
 		ra2			: in unsigned(4 downto 0);
 		wa3 			: in unsigned(4 downto 0);
-		
+
 		rd1			: out HALF_WORD_U;
 		rd2			: out HALF_WORD_U;
 
@@ -38,7 +38,7 @@ begin
 	ra1_plus1 	<= ra1 + 1;
 	ra2_plus1 	<= ra2 + 1;
 	wa3_plus1 	<= wa3 + 1;
-	
+
 	process(clk, rst)
 	begin
 		if rst then
@@ -59,7 +59,7 @@ begin
 	rd2(15 downto 8) 	<= GPR(to_integer(ra2_plus1)) when hword_en else x"00";
 	rd2(7 downto 0) 	<= GPR(to_integer(ra2));
 
-	xd_o	<= GPR(26) & GPR(27);
-	yd_o 	<= GPR(28) & GPR(29);
-	zd_o 	<= GPR(30) & GPR(31);
+	xd_o	<= GPR(27) & GPR(26);
+	yd_o 	<= GPR(29) & GPR(28);
+	zd_o 	<= GPR(31) & GPR(30);
 end architecture;

@@ -33,12 +33,19 @@ package types is
 	constant I 			: integer := 7;	-- interrupt enable
 
 	type mux_ctl_t is record -- multiplexer control
-		srcA 	: std_logic;
-		srcB 	: std_logic_vector(1 downto 0);
-		SP 	: std_logic_vector(1 downto 0);
-		GPR 	: std_logic;
-		PC 	: std_logic;
-		RAM 	: std_logic;
+		srcA    : std_logic_vector(1 downto 0);
+		srcB    : std_logic_vector(1 downto 0);
+		SP      : std_logic_vector(1 downto 0);
+		GPR     : std_logic;
+		PC      : std_logic;
+		addr    : std_logic_vector(1 downto 0);
+		data    : std_logic_vector(1 downto 0);
+		pointer : std_logic_vector(1 downto 0);
+	end record;
+
+	type en_branches_t is record
+		brlt 	: std_logic;
+		breq 	: std_logic;
 	end record;
 
 	type en_ctl_t is record -- enable
@@ -47,7 +54,7 @@ package types is
 		GPR 	: std_logic;
 		word 	: std_logic;
 		SREG 	: std_logic;
-		brlt 	: std_logic;
+		IO 	: std_logic;
 	end record;
 
 	type we_ctl_t is record -- read/write enable
@@ -61,6 +68,7 @@ package types is
 		mux 	: mux_ctl_t;
 		en 	: en_ctl_t;
 		we 	: we_ctl_t;
+		en_b 	: en_branches_t;
 	end record;
 	-- types
 --	type operation_type is (ldi, movw, sub, sbc, cpi, cpc, adiw, rjmp, sbiw, eor, rcall);
@@ -81,6 +89,6 @@ package types is
 									ICALL, RCALL, RET, RETI,
 									NOP, STZP, STYP, STZM, STYM, STDY, STDZ, SPMZ,
 									RJMP, cond_branch, BLD, BST, SBRC, SBRS, stx, stxp, stxm,
-									secc, CLI, BRLT);
+									secc, CLI, BRLT, BREQ);
 	attribute enum_encoding of operation_type : type is "gray";
 end package;

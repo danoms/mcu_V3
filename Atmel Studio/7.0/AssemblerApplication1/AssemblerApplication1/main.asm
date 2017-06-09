@@ -21,10 +21,17 @@ sbci R16,10		; R16 = 254 - 10 - 1 = 243
 rjmp pushy
 rcall pushy
 nop
-movw R16,19		; 
-adiw R28,61
+;movw R16,R20		; 
+;adiw R28,61
 pushy : 
 push R20		; RAM(SP0) = 15
 push R19		; RAM(SP1) = 5
+rcall outty
+
+
+outty :
+out 20,R16
 pop R16			; R16 = RAM(SP1) = 5
 pop R17			; R17 = RAM(SP0) = 15
+cpi R20,25		; 15 < 20
+brlt pushy

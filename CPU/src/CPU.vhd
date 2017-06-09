@@ -13,10 +13,8 @@ entity CPU is
 				data_o   : out unsigned(15 downto 0);
 				data_i   : in 	unsigned(15 downto 0);
 				addr_o   : out unsigned(15 downto 0);
-				we_RAM   : out std_logic;
-				we_IO    : out std_logic;
-
-				ctl_data : out std_logic); -- data_i <- RAM ? IO
+				ctl_o 	: out ctl_t
+				);
 end entity;
 
 architecture rtl of CPU is
@@ -70,16 +68,9 @@ architecture rtl of CPU is
 
          op_o				: out operation_type; -- controls ALU
 			ctl 				: out ctl_t;
-         -- ctl_line_o		: out mux_ctl_t;
-			-- ctl_en 			: out en_ctl_t;
-         -- clk_gating_o	: out std_logic_vector(7 downto 0);
-
          pc_offset 		: out unsigned(11 downto 0);
          io_addres_o 	: out unsigned(5 downto 0);
          bit_o 			: out unsigned(3 downto 0)
-
-         -- we_gpr 			: out std_logic;
-         -- we_sreg 			: out std_logic
       );
    end component;
    component general_purpose_register_v2
@@ -115,7 +106,7 @@ architecture rtl of CPU is
          SREG_o	: out std_logic_vector(7 downto 0));
    end component;
 
-   type state_t is (fetch, decode, execute, memory, writed);
+   type state_t is (waitt ,fetch, decode, execute, memory, writed);
    signal state_reg, state_next : state_t;
 	constant RAMEND : integer := 255;
    signal en        : std_logic_vector(7 downto 0) := (others => '0');
@@ -132,33 +123,34 @@ architecture rtl of CPU is
    signal op   : operation_type;
    signal srcA, srcB, aluResult, GPR_data : unsigned(15 downto 0);
    signal SREG, SREG_next : std_logic_vector(7 downto 0);
-	signal PC, PC_next, PC_plus1, SP_next, SP_adder	: unsigned(15 downto 0);
+	signal PC, PC_next, PC_plus1, SP_next, SP_adder	: unsigned(15 downto 0)	:= (others => '0');
 	signal SP	: unsigned(15 downto 0) := x"00FF";
 	signal PC_offset_s	: unsigned(15 downto 0);
 	signal Rs, Rd : unsigned(15 downto 0);
 	signal brlt_and 	: std_logic;
-	signal PC_mux_ctl 	: std_logic;
-	
+	signal PC_mux_ctl 	: std_logic := '0';
+	signal pointer : unsigned(15 downto 0);
+	signal branch_en 	: en_branches_t	:= (others => '0');
+	signal go_relative 	: std_logic := '0';
 	constant plus1 : unsigned(15 downto 0) := 16d"1";
 	constant minus1 : unsigned(15 downto 0) := x"FFFF";
 -- mux control signals
-	-- signal ctl_line 	: mux_ctl_t;
-	-- signal ctl_en 		: en_ctl_t;
 	signal ctl : ctl_t;
 begin
 
 sm_update : process(clk, rst)
 begin
    if rst then
-      state_reg   <= fetch;
+      state_reg   <= waitt;
    elsif rising_edge(clk) then
       state_reg   <= state_next;
    end if;
 end process;
-sm_comb : process(all)
+sm_seq : process(all)
 begin
    case( state_reg ) is
-
+		when waitt =>
+			state_next	<= fetch;
       when fetch =>
          state_next  <= decode;
       when decode =>
@@ -168,7 +160,7 @@ begin
       when memory =>
          state_next  <= writed;
       when writed =>
-         state_next  <= fetch;
+         state_next  <= waitt;
       when others =>
          state_next  <= fetch;
    end case;
@@ -184,34 +176,36 @@ en(1)    <= '1' when state_reg = decode or state_reg = writed else '0';
 GPR: general_purpose_register_v2 port map(clk, rst, en(1), Rd_addr, Rs_addr, Rd_addr, Rd, Rs, GPR_data,
                      we_GPR_l, ctl.en.word, xd, yd, zd);
 signed_PC_offset: signext port map(PC_offset, PC_offset_s);
-srcAmux: mux2 port map(Rd, PC, ctl.mux.srcA, srcA);
+srcPointermux: mux4 port map(x"0000", xd, yd, zd, ctl.mux.pointer, pointer);
+srcAmux: mux4 port map(Rd, PC, pointer, x"0000", ctl.mux.srcA, srcA);
 srcBmux: mux4 port map(Rs, x"00" & immed, PC_offset_s, x"0000", ctl.mux.srcB, srcB); -- control mux
--- srcBmux: mux2 port map(Rs, x"00" & immed, '1', srcB); -- control mux
 ALU: arithmetic_logic_unit_v2 port map(srcA, srcB, op, aluResult, SREG, SREG_next);
 dataGPRmux: mux2 port map(aluResult, data_i, ctl.mux.GPR, GPR_data);
 sreg_reg: reg generic map(8) port map(clk, rst, we_SREG_l, SREG_next, SREG); -- control sreg
 we_GPR_l   	<= '1' when state_reg = writed and ctl.we.GPR = '1' else '0';
 we_SREG_l	<= '1' when state_reg = writed and ctl.en.SREG = '1' else '0';
-
 --------------------- PC logic -------------------------
-PC_plusss1: adder port map(PC, 16d"1", PC_plus1);
-BRLT_and 	<= ctl.en.brlt and (SREG(N) xor SREG(V));
-PC_mux_ctl	<= ctl.mux.PC or BRLT_and;
+------branch logic ------
+branch_en.brlt		<= ctl.en_b.brlt and SREG(S); -- Rd < Rs
+branch_en.breq 	<= ctl.en_b.breq and SREG(Z);	-- Rd = Rs
+go_relative 		<= branch_en.brlt or branch_en.breq;
+------------------------
+PC_plus_1: adder port map(PC, 16d"1", PC_plus1);
+PC_mux_ctl	<= ctl.mux.PC or go_relative;
 PC_srcmux: mux2 port map(PC_plus1, aluResult, PC_mux_ctl, PC_next);
 en(7)    <= '1' when state_reg = writed else '0';
 pc_reg: regU port map(clk, rst, en(7), PC_next, PC);
 --------------------- SP logic -------------------------
-SP_add_mux:mux4 port map(x"0001", x"0002", x"FFFF", x"FFFE", ctl.mux.SP, SP_adder);
-SP_adder_a: adder port map(SP, SP_adder, SP_next);
+SP_add_mux:mux4 port map(x"0001", x"0002", x"FFFF", x"FFFE", ctl.mux.SP, SP_adder); -- SP_adder = [+1 +2 -1 -2]
+SP_adder_a: adder port map(SP, SP_adder, SP_next); -- SP = SP_next + SP_adder
 en(6) 	<= '1' when state_reg = writed and ctl.en.SP = '1' else '0';
 sp_reg: regU generic map(RAMEND) port map(clk, rst, en(6), SP_next, SP);
-
 --------------------- output -------------------------
-RAM_data_o: mux2 port map(aluResult, PC_plus1, ctl.mux.RAM, data_o);
-
-PC_o 		<= PC;
--- data_o 	<= aluResult;
-addr_o 	<= SP;
---en(5) 	<= '1' when state_reg = memory and ctl.en.RAM = '1' else '0';
-we_RAM 	<= '1' when state_reg = memory and ctl.we.RAM = '1' else '0';
+data_o_mux: mux4 port map(aluResult, PC_plus1, Rd, x"0000", ctl.mux.data, data_o);
+addr_o_mux: mux4 port map(aluResult, SP, "0000000000" & io_addr, SP_next, ctl.mux.addr, addr_o);
+PC_o 				<= PC;
+ctl_o.we.RAM 	<= '1' when state_reg = memory and ctl.we.RAM = '1' else '0';
+ctl_o.en.RAM 	<= '1' when state_reg = memory and ctl.en.RAM = '1' else '0';
+ctl_o.we.IO 	<= '1' when state_reg = memory and ctl.we.IO = '1' else '0';
+ctl_o.en.IO 	<= '1' when state_reg = memory and ctl.en.IO = '1' else '0';
 end architecture;
