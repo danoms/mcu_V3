@@ -55,12 +55,14 @@ ALU_op_logic :	process(all)
 				cli(SREG_i,SREG_o);
 			when orr =>
 				orr(a_i, b_i, SREG_i, result, SREG_o);
-			when rjmp | rcall | brlt | breq =>
+			when rjmp | rcall | brlt | breq | brne =>
 				sum_plus1(a_i, b_i, result);
 			when outt =>
 				outt(a_i, result);
 			when stdy | stdz | lddy | lddz =>
 				sum(a_i, b_i, result);
+			when ori =>
+				ori(a_i, b_i, SREG_i, result, SREG_o);
 			when others =>
 				result 	<= a_i;
 				SREG_o	<= SREG_i;

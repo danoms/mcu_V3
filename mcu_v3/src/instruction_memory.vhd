@@ -5,7 +5,6 @@ use 	ieee.std_logic_1164.all,
 
 entity instruction_memory is
 	port(	clk : in std_logic;
-			rst : in std_logic;
 
 			PC	 	: in 	unsigned(15 downto 0);
 			instr : out std_logic_vector(15 downto 0));
@@ -18,12 +17,19 @@ architecture rtl of instruction_memory is
 	function init_func return mem_t is
 		variable tmp : mem_t := (others => (others => '0'));
 		constant filez : std_logic_vector := x"09C00EC00DC00CC00BC00AC009C008C0" &
-											x"07C006C011241FBECFE9CDBF02D024C0" &
-											x"EFCFCF93DF93CDB7DD27C650CDBF88EC" &
-											x"90E09A83898381E990E09C838B831E82" &
-											x"1D828D819E81892B31F08D819E810197" &
-											x"9E838D83F6CF29813A818B819C81820F" &
-											x"931F9E838D83EDCFF894FFCF";
+											x"07C006C011241FBECFE9CDBF02D05BC0" &
+											x"EFCFCF93DF93CDB7DD27CA50CDBF1E82" &
+											x"1D8284E090E09A83898387E090E09C83" &
+											x"8B832B813C8189819A81820F931F9A87" &
+											x"898789859A859E838D8387B38F6087BB" &
+											x"88B3836088BB78E064E052E041E02B81" &
+											x"3C8189819A81820F931F98878F838F81" &
+											x"98859E838D8386B3811107C048BB8981" &
+											x"9A8101969A838983EACF86B3803139F4" &
+											x"58BB8B819C8101969C838B83E0CF86B3" &
+											x"803239F468BB89819A8101979A838983" &
+											x"D6CF86B3803399F678BB8B819C810197" &
+											x"9C838B83CCCFF894FFCF";
 	begin
 		for i in 0 to filez'length/16-1 loop
 --			tmp(i) 	:= filez((i+1)*8-1 downto (i*8));
@@ -33,7 +39,7 @@ architecture rtl of instruction_memory is
 	end function;
 
 	signal mem : mem_t := init_func;
-								
+
 	signal addr_reg : unsigned(15 downto 0);
 begin
 	process(all)

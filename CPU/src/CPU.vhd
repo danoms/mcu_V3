@@ -108,7 +108,7 @@ architecture rtl of CPU is
 
    type state_t is (waitt ,fetch, decode, execute, memory, writed);
    signal state_reg, state_next : state_t;
-	constant RAMEND : integer := 255;
+	constant RAMEND : integer := 2**9-1;
    signal en        : std_logic_vector(7 downto 0) := (others => '0');
    signal instr_reg : std_logic_vector(15 downto 0);
    signal Rd_addr, Rs_addr, wa3_GPR : unsigned(4 downto 0);
@@ -123,7 +123,7 @@ architecture rtl of CPU is
    signal op   : operation_type;
    signal srcA, srcB, aluResult, GPR_data : unsigned(15 downto 0);
    signal SREG, SREG_next : std_logic_vector(7 downto 0);
-	signal PC, PC_next, PC_plus1, SP_next, SP_adder	: unsigned(15 downto 0)	:= (others => '0');
+	signal PC, PC_next, PC_adder, PC_plus, SP_next, SP_adder	: unsigned(15 downto 0)	:= (others => '0');
 	signal SP	: unsigned(15 downto 0) := x"00FF";
 	signal PC_offset_s	: unsigned(15 downto 0);
 	signal Rs, Rd : unsigned(15 downto 0);
@@ -132,6 +132,7 @@ architecture rtl of CPU is
 	signal pointer : unsigned(15 downto 0);
 	signal branch_en 	: en_branches_t	:= (others => '0');
 	signal go_relative 	: std_logic := '0';
+	signal skip_en, cpse_en 	: std_logic 	:= '0';
 	constant plus1 : unsigned(15 downto 0) := 16d"1";
 	constant minus1 : unsigned(15 downto 0) := x"FFFF";
 -- mux control signals
@@ -186,13 +187,22 @@ we_GPR_l   	<= '1' when state_reg = writed and ctl.we.GPR = '1' else '0';
 we_SREG_l	<= '1' when state_reg = writed and ctl.en.SREG = '1' else '0';
 --------------------- PC logic -------------------------
 ------branch logic ------
-branch_en.brlt		<= ctl.en_b.brlt and SREG(S); -- Rd < Rs
-branch_en.breq 	<= ctl.en_b.breq and SREG(Z);	-- Rd = Rs
-go_relative 		<= branch_en.brlt or branch_en.breq;
+branch_en.brlt		<= ctl.en_b.brlt and SREG(S); 		-- Rd < Rs
+branch_en.breq 	<= ctl.en_b.breq and SREG(Z);			-- Rd = Rs
+branch_en.brne 	<= ctl.en_b.brne and not(SREG(Z)); 	-- Rd /= Rs
+
+go_relative 		<= branch_en.brlt or branch_en.breq or branch_en.brne;
+--skip if equal
+cpse_en 	<= (Rd(0) xor Rs(0)) or (Rd(1) xor Rs(1)) or (Rd(2) xor Rs(2)) or
+				(Rd(3) xor Rs(3)) or (Rd(4) xor Rs(4)) or (Rd(5) xor Rs(5)) or
+				(Rd(6) xor Rs(6)) or (Rd(7) xor Rs(7));
+
+skip_en 	<= ctl.en_b.cpse and not(cpse_en);
 ------------------------
-PC_plus_1: adder port map(PC, 16d"1", PC_plus1);
+PC_skipmux: mux2 port map(x"0001", x"0002", skip_en, PC_adder);
+PC_plus_l: adder port map(PC,PC_adder, PC_plus);
 PC_mux_ctl	<= ctl.mux.PC or go_relative;
-PC_srcmux: mux2 port map(PC_plus1, aluResult, PC_mux_ctl, PC_next);
+PC_srcmux: mux2 port map(PC_plus, aluResult, PC_mux_ctl, PC_next);
 en(7)    <= '1' when state_reg = writed else '0';
 pc_reg: regU port map(clk, rst, en(7), PC_next, PC);
 --------------------- SP logic -------------------------
@@ -201,11 +211,13 @@ SP_adder_a: adder port map(SP, SP_adder, SP_next); -- SP = SP_next + SP_adder
 en(6) 	<= '1' when state_reg = writed and ctl.en.SP = '1' else '0';
 sp_reg: regU generic map(RAMEND) port map(clk, rst, en(6), SP_next, SP);
 --------------------- output -------------------------
-data_o_mux: mux4 port map(aluResult, PC_plus1, Rd, x"0000", ctl.mux.data, data_o);
+data_o_mux: mux4 port map(aluResult, PC_plus, Rd, x"0000", ctl.mux.data, data_o);
 addr_o_mux: mux4 port map(aluResult, SP, "0000000000" & io_addr, SP_next, ctl.mux.addr, addr_o);
 PC_o 				<= PC;
 ctl_o.we.RAM 	<= '1' when state_reg = memory and ctl.we.RAM = '1' else '0';
-ctl_o.en.RAM 	<= '1' when state_reg = memory and ctl.en.RAM = '1' else '0';
+-- ctl_o.en.RAM 	<= '1' when state_reg = memory and ctl.en.RAM = '1' else '0';
+ctl_o.en.RAM 		<= ctl.en.RAM;
 ctl_o.we.IO 	<= '1' when state_reg = memory and ctl.we.IO = '1' else '0';
-ctl_o.en.IO 	<= '1' when state_reg = memory and ctl.en.IO = '1' else '0';
+-- ctl_o.en.IO 	<= '1' when state_reg = memory and ctl.en.IO = '1' else '0';
+ctl_o.en.IO 	<= ctl.en.IO;
 end architecture;

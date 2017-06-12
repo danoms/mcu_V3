@@ -56,7 +56,7 @@ begin
 		ctl.mux.GPR			<= '0';	-- aluResult
 		ctl.mux.SP 			<= "00";	-- SP + 1
 		ctl.mux.data 		<= "00";	-- aluResult
-		ctl.mux.addr 		<= "00";	-- aluResult
+		ctl.mux.addr 		<= "01";	-- SP
 		ctl.mux.pointer 	<= "00";	-- X
 
 		ctl.en 		<= (others => '0'); 	-- disabled
@@ -103,6 +103,7 @@ begin
 
 					when x"0" | x"1" | x"2" | x"3" =>
 						op_o 			<= cpse;
+						ctl.en_b.cpse 	<= '1';
 
             	when x"4" | x"5" | x"6" | x"7" =>
 						op_o 			<= cp;
@@ -177,6 +178,8 @@ begin
 				Rd_addr_o 	<=unsigned('1' & low_h_x);
 				immed_o 		<= unsigned(high_l_x & low_x);
 				op_o 			<= ori;
+				ctl.mux.srcB 	<= "01"; -- immed_o
+				ctl.we.GPR 		<= '1';
 
 			when x"7" =>
 				Rd_addr_o 	<= unsigned('1' & low_h_x);
@@ -190,16 +193,18 @@ begin
 			ctl.mux.srcA 	<= "10"; 		-- pointer
 			ctl.mux.srcB 	<= "01"; 		-- immediate
 			ctl.mux.data 	<= "10"; 		-- Rd
-				case?( high_l_x & low_x ) is
+			ctl.mux.GPR 	<= '1'; 			-- data_i
+			ctl.mux.addr 	<= "00";			-- aluResult
+			case?( high_l_x & low_x ) is
 
-					when "--0-0---" => -- read RAM
+					when "--0-0---" => -- read RAM, write in GPR
 						op_o	<= lddz;
 						ctl.mux.pointer 	<= "11";	-- Z
-
+						ctl.we.GPR 			<= '1';
 					when "--0-1---" =>
 						op_o	<= lddy;
 						ctl.mux.pointer 	<= "10";	-- Y
-
+						ctl.we.GPR 			<= '1';
 					when "--1-0---" => -- write RAM
 						op_o	<= stdz;
 						ctl.mux.pointer 	<= "11";	-- Z
@@ -356,11 +361,14 @@ begin
 						op_o			<= adiw;
 						ctl.en.word 	<= '1';
 						ctl.we.GPR 		<= '1';
+						ctl.mux.srcB 	<= "01"; 	-- immed
 
 					when x"7" =>
 						immed_o		<= unsigned("00" & data_i(7 downto 6) & low_x);
 						Rd_addr_o	<= unsigned("11" & data_i(5 downto 4) & '0');
 						op_o			<= sbiw;
+						ctl.mux.srcB 	<= "01"; 	-- immed_o
+						ctl.we.GPR 		<= '1';
 
 					when x"8" =>
 --						bit_o				<= unsigned(data_i(2 downto 0));
@@ -398,6 +406,10 @@ begin
 
 					when x"0" | x"1" | x"2" | x"3" | x"4" | x"5" | x"6" | x"7" =>
 						op_o 			<= inn;
+						ctl.mux.addr 	<= "10"; 	-- io_addres_o
+						ctl.we.GPR 		<= '1';
+						ctl.mux.GPR 	<= '1';		-- data_i
+						ctl.en.IO 		<= '1';
 
 					when x"8" | x"9" | x"A" | x"B" | x"C" | x"D" | x"E" | x"F" =>
 						op_o 				<= outt;
@@ -442,7 +454,7 @@ begin
 						pc_offset 	<= data_i(9)&data_i(9)&data_i(9)&data_i(9)&
 											data_i(9) & unsigned(data_i(9 downto 3));
 						ctl.mux.srcA 	<= "01"; 	-- PC
-						ctl.mux.srcB 	<= "01"; 	-- signed immed
+						ctl.mux.srcB 	<= "10"; 	-- signed immed
 
 						case (low_x(2 downto 0)) is
 							when "100" =>
@@ -451,6 +463,20 @@ begin
 							when "001" =>
 								op_o 	<= breq;
 								ctl.en_b.breq 	<= '1';
+
+							when others =>
+						end case;
+
+					when x"4" | x"5" | x"6" | x"7"  =>
+						pc_offset 	<= data_i(9)&data_i(9)&data_i(9)&data_i(9)&
+											data_i(9) & unsigned(data_i(9 downto 3));
+						ctl.mux.srcA 	<= "01"; 	-- PC
+						ctl.mux.srcB 	<= "10"; 	-- signed immed
+
+						case (low_x(2 downto 0)) is
+							when "001" =>
+								op_o 	<= brne;
+								ctl.en_b.brne 	<= '1';
 
 							when others =>
 						end case;

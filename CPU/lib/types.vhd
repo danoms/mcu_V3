@@ -46,6 +46,9 @@ package types is
 	type en_branches_t is record
 		brlt 	: std_logic;
 		breq 	: std_logic;
+		brne 	: std_logic;
+
+		cpse 	: std_logic;
 	end record;
 
 	type en_ctl_t is record -- enable
@@ -89,6 +92,6 @@ package types is
 									ICALL, RCALL, RET, RETI,
 									NOP, STZP, STYP, STZM, STYM, STDY, STDZ, SPMZ,
 									RJMP, cond_branch, BLD, BST, SBRC, SBRS, stx, stxp, stxm,
-									secc, CLI, BRLT, BREQ);
+									secc, CLI, BRLT, BREQ, BRNE);
 	attribute enum_encoding of operation_type : type is "gray";
 end package;

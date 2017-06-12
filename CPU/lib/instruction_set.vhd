@@ -114,6 +114,12 @@ package instruction_set is
 	-- Id: 21.0
 	procedure sum_plus1(signal a_i, b_i 	: in unsigned(15 downto 0);
 								signal result 		: out unsigned(15 downto 0));
+
+	-- Id: 22.0
+	procedure ori (signal a_i, b_i 		: in unsigned(15 downto 0);
+						signal SREG_i			: in BYTE;
+						signal result			: out unsigned(15 downto 0);
+						signal SREG_o 			: out BYTE);
 end package;
 
 package body instruction_set is
@@ -547,5 +553,26 @@ package body instruction_set is
 		tmp_R 			:= a_i + b_i + 1;
 	-- out
 		result	<= tmp_R;
+	end procedure;
+
+	-- Id: 22.0
+	procedure ori (signal a_i, b_i 		: in unsigned(15 downto 0);
+						signal SREG_i			: in BYTE;
+						signal result			: out unsigned(15 downto 0);
+						signal SREG_o 			: out BYTE) is
+		variable tmp_SREG_o 	: BYTE 	:= SREG_i;
+		variable tmp_R 		: unsigned(15 downto 0);
+	begin
+	-- result
+		tmp_R 			:= a_i or b_i;
+	-- set flags DONE
+		tmp_SREG_o(V)	:= '0';
+		tmp_SREG_o(N)	:= tmp_R(7);
+		tmp_SREG_o(Z)	:= not(tmp_R(7))and not(tmp_R(6))and not(tmp_R(5))and not(tmp_R(4)) and
+								not(tmp_R(3))and not(tmp_R(2))and not(tmp_R(1))and not(tmp_R(0));
+		tmp_SREG_o(S)	:= tmp_SREG_o(N) xor tmp_SREG_o(V);
+	-- out
+		result	<= tmp_R;
+		SREG_o	<= tmp_SREG_o;
 	end procedure;
 end package body;

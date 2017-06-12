@@ -1,5 +1,5 @@
 transcript on
-set ALL_DIR "D:/git/hub_git/mcu_V3"
+set ALL_DIR "D:/git/github/mcu_V3"
 
 vlib rtl_work
 vmap work rtl_work
